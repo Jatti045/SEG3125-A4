@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+    themes: light --default;
+}
+@plugin "daisyui/theme" {
+    name: "gamevault";
+    default: true; /* set as default */
+    prefersdark: false; /* set as default dark mode (prefers-color-scheme:dark) */
+    color-scheme: light; /* color of browser-provided UI */
+
+    --color-base-100: oklch(100% 0 0);
+    --color-base-200: oklch(98% 0.002 247.839);
+    --color-base-300: oklch(96% 0.003 264.542);
+    --color-base-content: oklch(21% 0.034 264.665);
+    --color-primary: oklch(63% 0.237 25.331);
+    --color-primary-content: oklch(100% 0 0);
+    --color-secondary: oklch(55% 0.027 264.364);
+    --color-secondary-content: oklch(100% 0 0);
+    --color-accent: oklch(57% 0.245 27.325);
+    --color-accent-content: oklch(100% 0 0);
+    --color-neutral: oklch(21% 0.034 264.665);
+    --color-neutral-content: oklch(92.951% 0.002 17.197);
+    --color-info: oklch(62% 0.214 259.815);
+    --color-info-content: oklch(100% 0 0);
+    --color-success: oklch(69% 0.17 162.48);
+    --color-success-content: oklch(100% 0 0);
+    --color-warning: oklch(76% 0.188 70.08);
+    --color-warning-content: oklch(100% 0 0);
+    --color-error: oklch(70% 0.191 22.216);
+    --color-error-content: oklch(100% 0 0);
+
+    --radius-selector: 0rem;
+    --radius-field: 0rem;
+    --radius-box: 1rem;
+
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+
+    --border: 1px;
+
+    --depth: 0;
+    --noise: 0;
+}
