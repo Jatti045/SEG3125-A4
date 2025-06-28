@@ -3,14 +3,14 @@ import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="hero bg-gray-900 text-gray-300 py-12">
+    <footer className="bg-base-content">
+      <div className="hero py-12">
         <div className="hero-content text-center">
           <div className="w-full">
-            <h2 className="text-3xl font-extrabold text-white">
+            <h2 className="text-3xl font-extrabold text-base-100">
               STAY IN THE GAME
             </h2>
-            <p className="mt-4 text-lg">
+            <p className="mt-4 text-lg text-base-100">
               Get the latest releases, exclusive deals, and gaming news
               delivered straight to your inbox
             </p>
@@ -20,21 +20,17 @@ const Footer = () => {
                 placeholder="Enter your email"
                 className="input input-bordered join-item w-full max-w-md"
               />
-              <button className="btn btn-error join-item">SUBSCRIBE</button>
+              <button className="btn btn-primary join-item">SUBSCRIBE</button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="footer px-10 py-12 bg-gray-900 text-neutral-content grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        <div>
-          <span className="footer-title">
+      <div className="footer container mx-auto px-10 py-12 bg-gray-900 text-neutral-content grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8">
+        <div className={"mx-auto"}>
+          <span className="footer-title font-black">
             <span className="text-red-500">GAME</span>VAULT
           </span>
-          <p className="mt-2 text-sm">
-            Your ultimate destination for board games, card games, and gaming
-            accessories. Discover epic adventures and strategic challenges.
-          </p>
           <div className="grid grid-flow-col gap-4 mt-4">
             <a href="#" aria-label="Facebook">
               <Facebook size={20} />
@@ -51,7 +47,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div>
+        <div className={"mx-auto"}>
           <span className="footer-title uppercase">Shop</span>
           <a href="#" className="link link-hover">
             Playing Cards
@@ -73,7 +69,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div>
+        <div className={"mx-auto"}>
           <span className="footer-title uppercase">Support</span>
           <a href="#" className="link link-hover">
             Contact Us
@@ -94,41 +90,10 @@ const Footer = () => {
             Retailer Portal
           </a>
         </div>
-
-        <div>
-          <span className="footer-title uppercase">Stay Updated</span>
-          <p className="mt-2 text-sm">
-            Subscribe to get special offers, free giveaways, and the latest game
-            releases.
-          </p>
-          <div className="mt-4">
-            <div className="form-control">
-              <div className="input-group">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="input input-bordered w-full"
-                />
-                <button className="btn btn-error">SUBSCRIBE</button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
-      <div className="footer px-10 py-4 border-t border-gray-700 bg-gray-900 text-gray-500">
+      <div className=" text-center mx-10 py-4 border-t border-gray-700 text-secondary">
         <p className="text-sm">© 2024 GameVault. All rights reserved.</p>
-        <div className="flex space-x-4">
-          <a href="#" className="link link-hover text-sm">
-            Privacy Policy
-          </a>
-          <a href="#" className="link link-hover text-sm">
-            Terms of Service
-          </a>
-          <a href="#" className="link link-hover text-sm">
-            Cookie Policy
-          </a>
-        </div>
       </div>
     </footer>
   );
