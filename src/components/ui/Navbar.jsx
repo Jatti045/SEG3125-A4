@@ -16,8 +16,8 @@ const Navbar = () => {
           <nav className="navbar fixed top-0 z-10 bg-base-100 shadow px-10">
             <div className="navbar-start">
               <Link to="/" className="link no-underline normal-case text-3xl font-black">
-                <span className="text-red-500">GAME</span>
-                <span className="text-gray-900">VAULT</span>
+                <span className="text-primary">GAME</span>
+                <span className="text-base-content">VAULT</span>
               </Link>
             </div>
 
@@ -60,7 +60,7 @@ const Navbar = () => {
               </button>
               <Link to="/cart" className="btn btn-ghost indicator">
                 <ShoppingCart className="w-5 h-5"/>
-                <span className="badge badge-sm badge-error indicator-item">3</span>
+                <span className="badge badge-sm badge-primary indicator-item">3</span>
               </Link>
               <label htmlFor="drawer-nav" className="btn btn-ghost lg:hidden">
                 <svg
