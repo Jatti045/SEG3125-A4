@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className={"drawer drawer-end"}>
         <input id="drawer-nav" type="checkbox" className="drawer-toggle"/>
         <div className={"drawer-content flex flex-col"}>
-          <nav className="navbar fixed top-0 z-10 bg-base-100 shadow px-10">
+          <nav className="navbar fixed z-2 top-0 bg-base-100 shadow px-10">
             <div className="navbar-start">
               <Link to="/" className="link no-underline normal-case text-3xl font-black">
                 <span className="text-primary">GAME</span>
@@ -32,7 +32,7 @@ const Navbar = () => {
                     Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
                   </Link>
                   {isDropdownOpen && (
-                      <ul tabIndex={0} className="dropdown-content !mt-0  menu bg-base-100 rounded-box z-1 w-52 shadow-sm font-regular text-md">
+                      <ul tabIndex={0} className="dropdown-content !mt-0 menu bg-base-100 rounded-box w-52 shadow-sm font-regular text-md">
                         <li><Link to="/shop/cards" onClick={closeDropdown}>Playing Cards</Link></li>
                         <li><Link to="/shop/dice" onClick={closeDropdown}>Dice Sets</Link></li>
                         <li><Link to="/shop/board_games" onClick={closeDropdown}>Board Games</Link></li>
@@ -81,7 +81,7 @@ const Navbar = () => {
             </div>
           </nav>
         </div>
-        <div className="drawer-side">
+        <div className="drawer-side z-3">
           <label htmlFor="drawer-nav" aria-label="close sidebar" className="drawer-overlay"></label>
           <label className={"absolute top-4 right-4 z-10 text-xl cursor-pointer text-gray-600"} htmlFor="drawer-nav" aria-label="close sidebar">x</label>
           <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 pt-10">

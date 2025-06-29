@@ -1,11 +1,12 @@
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {ArrowRight} from "lucide-react";
 
 const Banner = function () {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const totalSlides = 4;
+    const slideInterval = 6000;
 
     const nextSlide = () => {
         setCurrentSlide((prevSlide) => ((prevSlide + 1) % totalSlides));
@@ -17,34 +18,44 @@ const Banner = function () {
         setCurrentSlide(newSlide);
     }
 
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            nextSlide();
+        }, slideInterval)
+
+        return () => {
+            clearInterval(intervalId);
+        }
+    }, [currentSlide])
+
     // Array to map through for cleaner rendering
     const slides = [
         {
             id: 0,
             imgSrc: "https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp",
             link: "/",
-            title: "T1",
+            name: "T1",
             subs: "Experience T1"
         },
         {
             id: 1,
             imgSrc: "https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp",
             link: "/",
-            title: "T2",
+            name: "T2",
             subs: "Experience T2"
         },
         {
             id: 2,
             imgSrc: "https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp",
             link: "/",
-            title: "T3",
+            name: "T3",
             subs: "Experience T3"
         },
         {
             id: 3,
             imgSrc: "https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp",
             link: "/",
-            title: "T4",
+            name: "T4",
             subs: "Experience T4"
         }
     ];
@@ -71,7 +82,7 @@ const Banner = function () {
                             <div className="hero">
                                 <div className="hero-content text-start">
                                     <div className="max-w-lg">
-                                        <h1 className={"text-8xl lg:text-10xl font-black drop-shadow-lg leading-tight"}>{slide.title}</h1>
+                                        <h1 className={"text-8xl lg:text-10xl font-black drop-shadow-lg leading-tight"}>{slide.name}</h1>
                                         <p className={"font-bold text-5xl lg:text-7xl drop-shadow-lg leading-tight"}>{slide.subs}</p>
                                         <Link to={slide.link} className={"btn btn-primary text-2xl lg:text-4xl px-5 py-6 lg:py-8 font-black mt-4"}>LEARN MORE<ArrowRight className={"ml-3 w-5 h-5"} strokeWidth={4}/></Link>
                                     </div>
