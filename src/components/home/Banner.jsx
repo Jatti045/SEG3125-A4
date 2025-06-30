@@ -98,7 +98,7 @@ const Banner = function () {
                 <button onClick={nextSlide} className="btn btn-circle">❯</button>
             </div>
             <div className="absolute bottom-0 left-0 right-0">
-                <svg viewBox="0 0 1200 120" className="w-full h-16 fill-base-content">
+                <svg viewBox="0 0 1200 120" className="w-fit mx-auto h-16 fill-base-content">
                     <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"></path>
                 </svg>
             </div>

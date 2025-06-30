@@ -55,7 +55,7 @@ const FeaturedGames = function () {
                 </div>
             </div>
             <div className="absolute -bottom-16 left-0 right-0">
-                <svg viewBox="0 0 1200 120" className="w-full h-16 fill-base-content transform -scale-100">
+                <svg viewBox="0 0 1200 120" className="w-fit mx-auto h-16 fill-base-content transform -scale-100">
                     <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"></path>
                 </svg>
             </div>
