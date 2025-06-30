@@ -1,12 +1,6 @@
 import React from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
-import {
-  Star,
-  ShoppingCart,
-  Truck,
-  Shield,
-  RefreshCcw,
-} from "lucide-react";
+import { Star, ShoppingCart, Truck, Shield, RefreshCcw } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "@/components/product/ProductCard.jsx";
 
@@ -36,14 +30,14 @@ export default function Product() {
 
   function incrementQt() {
     let quantity = document.getElementById("quantity_box").value;
-    quantity++
+    quantity++;
     document.getElementById("quantity_box").value = quantity;
   }
 
   function decreaseQt() {
     let quantity = document.getElementById("quantity_box").value;
-    if (quantity === '1') return;
-    quantity--
+    if (quantity === "1") return;
+    quantity--;
     document.getElementById("quantity_box").value = quantity;
   }
 

@@ -1,29 +1,41 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Search, ShoppingCart } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext";
+import products from "@/data/products"; // adjust path as needed
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   const { cart } = useShoppingCart();
+  const location = useLocation();
 
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
+  // Filter up to 5 matching products
+  useEffect(() => {
+    if (searchTerm.trim()) {
+      const matches = products
+        .filter((p) => p.name.toLowerCase().includes(searchTerm.toLowerCase()))
+        .slice(0, 5);
+      setSearchResults(matches);
+    } else {
+      setSearchResults([]);
+    }
+  }, [searchTerm]);
 
+  const closeDropdown = () => setIsDropdownOpen(false);
   const closeDrawer = () => {
     const drawerCheckbox = document.getElementById("drawer-nav");
     if (drawerCheckbox) drawerCheckbox.checked = false;
   };
 
-  const location = useLocation();
-
   return (
-    <div className={"drawer drawer-end"}>
+    <div className="drawer drawer-end">
       <input id="drawer-nav" type="checkbox" className="drawer-toggle" />
-      <div className={"drawer-content flex flex-col"}>
-        <nav className="navbar fixed z-2 top-0 bg-base-100 shadow px-10">
+      <div className="drawer-content flex flex-col">
+        <nav className="navbar fixed z-20 top-0 bg-base-100 shadow px-10">
           <div className="navbar-start">
             <Link
               to="/"
@@ -36,106 +48,107 @@ const Navbar = () => {
 
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal font-bold text-lg px-1">
-              <li className={"dropdown dropdown-hover"} tabIndex={0}>
-                <Link to="/shop" onClick={closeDropdown} onMouseEnter={() => setIsDropdownOpen(true)}>
-                  Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
+              <li className="dropdown dropdown-hover" tabIndex={0}>
+                <Link to="/shop">
+                  <button
+                    onMouseEnter={() => setIsDropdownOpen(true)}
+                    onClick={closeDropdown}
+                    className="flex items-center"
+                  >
+                    Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
+                  </button>
                 </Link>
                 {isDropdownOpen && (
-                  <ul
-                    tabIndex={0}
-                    className="dropdown-content !mt-0 menu bg-base-100 rounded-box w-52 shadow-sm font-regular text-md"
-                  >
-                    <li
-                      className={`${
-                        location.search.includes("cards") ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <Link to="/shop/?cagetory=cards" onClick={closeDropdown}>
-                        Playing Cards
-                      </Link>
-                    </li>
-                    <li
-                      className={`${
-                        location.search.includes("dice") ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <Link to="/shop/?category=dice" onClick={closeDropdown}>
-                        Dice Sets
-                      </Link>
-                    </li>
-                    <li
-                      className={`${
-                        location.search.includes("board_games")
-                          ? "bg-gray-200"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="/shop/?category=board_games"
-                        onClick={closeDropdown}
+                  <ul className="dropdown-content !mt-0 menu bg-base-100 rounded-box w-52 shadow-sm font-regular text-md">
+                    {[
+                      ["cards", "Playing Cards"],
+                      ["dice", "Dice Sets"],
+                      ["board_games", "Board Games"],
+                      ["rpg", "Role Playing Games"],
+                      ["puzzle_games", "Puzzle Games"],
+                      ["trivia_games", "Trivia Games"],
+                    ].map(([key, label]) => (
+                      <li
+                        key={key}
+                        className={
+                          location.search.includes(`category=${key}`)
+                            ? "bg-gray-200"
+                            : ""
+                        }
                       >
-                        Board Games
-                      </Link>
-                    </li>
-                    <li
-                      className={`${
-                        location.search.includes("rpg") ? "bg-gray-200" : ""
-                      }`}
-                    >
-                      <Link to="/shop/?category=rpg" onClick={closeDropdown}>
-                        Role Playing Games
-                      </Link>
-                    </li>
-                    <li
-                      className={`${
-                        location.search.includes("puzzle_games")
-                          ? "bg-gray-200"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="/shop/?category=puzzle_games"
-                        onClick={closeDropdown}
-                      >
-                        Puzzle Games
-                      </Link>
-                    </li>
-                    <li
-                      className={`${
-                        location.search.includes("trivia_games")
-                          ? "bg-gray-200"
-                          : ""
-                      }`}
-                    >
-                      <Link
-                        to="/shop/?category=trivia_games"
-                        onClick={closeDropdown}
-                      >
-                        Trivia Games
-                      </Link>
-                    </li>
+                        <Link
+                          to={`/shop/?category=${key}`}
+                          onClick={closeDropdown}
+                        >
+                          {label}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 )}
               </li>
               <li>
-                <Link to="/about" onClick={closeDropdown}>About</Link>
+                <Link to="/about" onClick={closeDropdown}>
+                  About
+                </Link>
               </li>
               <li>
-                <Link to="/contact" onClick={closeDropdown}>Contact</Link>
+                <Link to="/contact" onClick={closeDropdown}>
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
 
-          <div className="navbar-end space-x-2 lg:space-x-1">
-            <button className="btn btn-ghost">
-              <Search className="w-5 h-5" />
-            </button>
+          <div className="navbar-end space-x-2 lg:space-x-1 relative">
+            {/* Search toggle and dropdown */}
+            <div className="relative">
+              <button
+                className="btn btn-ghost"
+                onClick={() => {
+                  setShowSearchInput((v) => !v);
+                  setSearchTerm("");
+                }}
+              >
+                <Search className="w-5 h-5" />
+              </button>
+              {showSearchInput && (
+                <div className="absolute right-0 mt-2 w-64 bg-base-100 shadow-lg rounded">
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="input input-bordered w-full"
+                    placeholder="Search products..."
+                    autoFocus
+                  />
+                  {searchResults.length > 0 && (
+                    <ul className="menu bg-base-100 rounded-box w-full">
+                      {searchResults.map((product) => (
+                        <li key={product.id}>
+                          <Link
+                            to={`/product/${product.id}`}
+                            onClick={() => setShowSearchInput(false)}
+                          >
+                            {product.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Cart icon with badge */}
             <Link to="/cart" className="btn btn-ghost indicator">
               <ShoppingCart className="w-5 h-5" />
               <span className="badge badge-sm badge-primary indicator-item">
-                {cart && cart.length}
+                {cart?.length || 0}
               </span>
             </Link>
+
+            {/* Mobile drawer toggle */}
             <label htmlFor="drawer-nav" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -155,75 +168,80 @@ const Navbar = () => {
           </div>
         </nav>
       </div>
-      <div className="drawer-side z-3">
-        <label
-          htmlFor="drawer-nav"
-          aria-label="close sidebar"
-          className="drawer-overlay"
-        ></label>
-        <label
-          className={"absolute top-4 right-4 z-10 text-xl cursor-pointer text-gray-600"}
-          htmlFor="drawer-nav"
-          aria-label="close sidebar"
-        >x</label>
+
+      {/* Mobile Drawer Side */}
+      <div className="drawer-side z-30">
+        <label htmlFor="drawer-nav" className="drawer-overlay"></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 pt-10">
+          {/* Mobile Search Input */}
+          <div className="mb-4">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="input input-bordered w-full"
+              placeholder="Search products..."
+            />
+            {searchResults.length > 0 && (
+              <ul className="menu bg-base-200 rounded-box w-full mt-2">
+                {searchResults.map((product) => (
+                  <li key={product.id} onClick={closeDrawer}>
+                    <Link to={`/product/${product.id}`}>{product.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          {/* Categories */}
           <li>
-            <Link className={"font-bold text-2xl"} to="/shop" onClick={closeDrawer}>
-              Shop
-            </Link>
+            <span className="font-bold text-2xl">Shop</span>
             <ul>
-              <li>
-                <Link className={"font-regular text-lg"} to="/shop/?category=cards" onClick={closeDrawer}>
-                  Playing Cards
-                </Link>
-              </li>
-              <li>
-                <Link className={"font-regular text-lg"} to="/shop/?category=dice" onClick={closeDrawer}>
-                  Dice Sets
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={"font-regular text-lg"}
-                  to="/shop/?category=board_games"
-                  onClick={closeDrawer}
+              {[
+                ["cards", "Playing Cards"],
+                ["dice", "Dice Sets"],
+                ["board_games", "Board Games"],
+                ["rpg", "Role Playing Games"],
+                ["puzzle_games", "Puzzle Games"],
+                ["trivia_games", "Trivia Games"],
+              ].map(([key, label]) => (
+                <li
+                  key={key}
+                  className={
+                    location.search.includes(`category=${key}`)
+                      ? "bg-gray-200"
+                      : ""
+                  }
                 >
-                  Board Games
-                </Link>
-              </li>
-              <li>
-                <Link className={"font-regular text-lg"} to="/shop/?category=rpg" onClick={closeDrawer}>
-                  Role Playing Games
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={"font-regular text-lg"}
-                  to="/shop/?category=puzzle_games"
-                  onClick={closeDrawer}
-                >
-                  Puzzle Games
-                </Link>
-              </li>
-              <li>
-                <Link
-                  className={"font-regular text-lg"}
-                  to="/shop/?category=trivia_games"
-                  onClick={closeDrawer}
-                >
-                  Trivia Games
-                </Link>
-              </li>
+                  <Link
+                    className="font-regular text-lg"
+                    to={`/shop/?category=${key}`}
+                    onClick={closeDrawer}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </li>
+
+          {/* Other links */}
           <li>
-            <Link className={"font-bold w-full text-2xl"} to="/about" onClick={closeDrawer}>
+            <Link
+              className="font-bold w-full text-2xl"
+              to="/about"
+              onClick={closeDrawer}
+            >
               About
             </Link>
           </li>
-          <li className={"w-full"}>
-            <Link className={"font-bold text-2xl w-full"} to="/contact" onClick={closeDrawer}>
-                Contact
+          <li>
+            <Link
+              className="font-bold text-2xl w-full"
+              to="/contact"
+              onClick={closeDrawer}
+            >
+              Contact
             </Link>
           </li>
         </ul>
