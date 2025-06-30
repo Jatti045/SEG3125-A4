@@ -1,0 +1,120 @@
+// src/pages/Product.jsx
+import React from "react";
+import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
+import {
+  Star,
+  ShoppingCart,
+  Heart,
+  Share2,
+  Truck,
+  Shield,
+  RefreshCcw,
+} from "lucide-react";
+import { useLocation } from "react-router-dom";
+import ProductCard from "../components/product/ProductCard.jsx";
+
+export default function Product() {
+  const { items } = useShoppingCart();
+  const location = useLocation();
+
+  const productId = location.pathname.split("/")[2];
+  const parsedProductId = parseInt(productId);
+
+  const product = items.find((item) => item.id === parsedProductId);
+
+  const relatedProducts = pickRandom(items, 3);
+
+  function pickRandom(arr, count) {
+    const a = arr.slice();
+
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+
+    return a.slice(0, count);
+  }
+
+  console.log("Product: ", product);
+  return (
+    <div className="p-8 space-y-8 bg-base-200">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="w-full lg:w-1/2">
+          <div className="relative">
+            <img
+              src={product.imageUrl}
+              alt="Product"
+              className="w-full rounded-lg shadow"
+            />
+            <div className="absolute top-4 left-4 badge badge-primary">
+              Bestseller
+            </div>
+          </div>
+        </div>
+
+        {/* Details */}
+        <div className="flex-1 space-y-4">
+          <h1 className="text-4xl font-bold">{product.name}</h1>
+          <div className="flex items-center space-x-4 text-lg">
+            <div className="flex items-center text-yellow-400">
+              <Star size={20} />
+              <span className="ml-1 font-medium">4.8</span>
+            </div>
+            <span className="text-gray-500">(1247 reviews)</span>
+            <span className="text-green-600 font-medium">In Stock</span>
+          </div>
+
+          <div className="flex items-baseline space-x-4">
+            <span className="text-3xl font-bold">{product.price}</span>
+            <span className="text-lg line-through text-gray-400">
+              {product.price}
+            </span>
+            <span className="badge badge-error">Save $10.00</span>
+          </div>
+
+          <p className="text-gray-700">{product.description}</p>
+
+          <div className="flex items-center space-x-4">
+            <button className="btn btn-primary flex-1 gap-2">
+              <ShoppingCart /> Add to Cart
+            </button>
+          </div>
+
+          {/* Shipping & Policies */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t">
+            <div className="flex items-center space-x-2">
+              <Truck className="text-primary" />
+              <div>
+                <div className="font-medium">Free Shipping</div>
+                <div className="text-sm text-gray-600">On orders over $50</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Shield className="text-primary" />
+              <div>
+                <div className="font-medium">Secure Payment</div>
+                <div className="text-sm text-gray-600">100% secure</div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RefreshCcw className="text-primary" />
+              <div>
+                <div className="font-medium">Easy Returns</div>
+                <div className="text-sm text-gray-600">30-day policy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-bold mb-4">Related Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {relatedProducts.map((item) => (
+            <ProductCard item={item} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

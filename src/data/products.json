@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Premium Poker Cards",
+    "description": "Smooth, durable playing cards with precision edges for perfect shuffling.",
+    "price": 24.99,
+    "category": "cards",
+    "imageUrl": "https://example.com/images/poker_cards.jpg",
+    "inStock": 56
+  },
+  {
+    "id": 2,
+    "name": "Tarot Card Deck",
+    "description": "Full 78‐card tarot deck with guidebook, elegant artwork on each card.",
+    "price": 19.95,
+    "category": "cards",
+    "imageUrl": "https://example.com/images/tarot_deck.jpg",
+    "inStock": 42
+  },
+  {
+    "id": 3,
+    "name": "Customizable Dice Set (7 pcs)",
+    "description": "Seven polyhedral RPG dice in your choice of color and finish.",
+    "price": 12.5,
+    "category": "dice",
+    "imageUrl": "https://example.com/images/rpg_dice_set.jpg",
+    "inStock": 85
+  },
+  {
+    "id": 4,
+    "name": "Metal D20 Dice",
+    "description": "High‐precision metal 20-sided dice with etched numerals.",
+    "price": 14.99,
+    "category": "dice",
+    "imageUrl": "https://example.com/images/metal_d20.jpg",
+    "inStock": 33
+  },
+  {
+    "id": 5,
+    "name": "Catan: Classic Edition",
+    "description": "Trade, build, and settle the island in this award-winning strategy board game.",
+    "price": 44.99,
+    "category": "board games",
+    "imageUrl": "https://example.com/images/catan.jpg",
+    "inStock": 28
+  },
+  {
+    "id": 6,
+    "name": "Ticket to Ride",
+    "description": "Collect train cards, claim routes, and connect cities across America.",
+    "price": 39.95,
+    "category": "board games",
+    "imageUrl": "https://example.com/images/ticket_to_ride.jpg",
+    "inStock": 37
+  },
+  {
+    "id": 7,
+    "name": "Dungeons & Dragons Starter Set",
+    "description": "Everything you need to start your first RPG campaign, including rulebook and dice.",
+    "price": 29.99,
+    "category": "rpg",
+    "imageUrl": "https://example.com/images/dnd_starter.jpg",
+    "inStock": 50
+  },
+  {
+    "id": 8,
+    "name": "Pathfinder Beginner Box",
+    "description": "Accessible RPG kit with adventures and character-building tools.",
+    "price": 24.99,
+    "category": "rpg",
+    "imageUrl": "https://example.com/images/pathfinder_box.jpg",
+    "inStock": 45
+  },
+  {
+    "id": 9,
+    "name": "3D Wooden Puzzle – Globe",
+    "description": "Assemble a wooden globe model, pieces slot together precisely.",
+    "price": 18.5,
+    "category": "puzzle games",
+    "imageUrl": "https://example.com/images/wooden_globe_puzzle.jpg",
+    "inStock": 67
+  },
+  {
+    "id": 10,
+    "name": "Escape Room in a Box",
+    "description": "Cooperative puzzle game you can play at home, solve riddles to 'escape'.",
+    "price": 27.99,
+    "category": "puzzle games",
+    "imageUrl": "https://example.com/images/escape_room_box.jpg",
+    "inStock": 22
+  },
+  {
+    "id": 11,
+    "name": "Trivial Pursuit: Master Edition",
+    "description": "Test your knowledge with over 2,000 trivia questions across 6 categories.",
+    "price": 34.99,
+    "category": "trivia games",
+    "imageUrl": "https://example.com/images/trivial_master.jpg",
+    "inStock": 40
+  },
+  {
+    "id": 12,
+    "name": "Smart Ass Trivia Game",
+    "description": "Fast-paced party trivia where shouting answers is encouraged!",
+    "price": 22.5,
+    "category": "trivia games",
+    "imageUrl": "https://example.com/images/smart_ass.jpg",
+    "inStock": 55
+  },
+  {
+    "id": 13,
+    "name": "Illustrated Animal Playing Cards",
+    "description": "Deck of standard playing cards featuring hand-drawn wildlife illustrations.",
+    "price": 16.99,
+    "category": "cards",
+    "imageUrl": "https://example.com/images/animal_cards.jpg",
+    "inStock": 75
+  },
+  {
+    "id": 14,
+    "name": "Glow-in-the-Dark Dice Set",
+    "description": "Seven polyhedral dice that glow for night-time RPG sessions.",
+    "price": 13.95,
+    "category": "dice",
+    "imageUrl": "https://example.com/images/glow_dice.jpg",
+    "inStock": 60
+  },
+  {
+    "id": 15,
+    "name": "Azul",
+    "description": "Tile-laying board game where players score points by drafting tiles.",
+    "price": 39.99,
+    "category": "board games",
+    "imageUrl": "https://example.com/images/azul.jpg",
+    "inStock": 30
+  },
+  {
+    "id": 16,
+    "name": "Starfinder RPG Core Rulebook",
+    "description": "Sci-fi RPG rulebook with classes, races, and space combat rules.",
+    "price": 49.99,
+    "category": "rpg",
+    "imageUrl": "https://example.com/images/starfinder_core.jpg",
+    "inStock": 20
+  },
+  {
+    "id": 17,
+    "name": "3D Crystal Puzzle – Eiffel Tower",
+    "description": "Transparent crystal pieces form a miniature Eiffel Tower model.",
+    "price": 21.0,
+    "category": "puzzle games",
+    "imageUrl": "https://example.com/images/crystal_eiffel.jpg",
+    "inStock": 28
+  },
+  {
+    "id": 18,
+    "name": "Bezzerwizzer Trivia Board Game",
+    "description": "Trade categories and answer questions to earn points and win.",
+    "price": 29.95,
+    "category": "trivia games",
+    "imageUrl": "https://example.com/images/bezzerwizzer.jpg",
+    "inStock": 44
+  },
+  {
+    "id": 19,
+    "name": "Collector’s Edition Playing Cards",
+    "description": "Limited-run collector cards with metallic foil accents.",
+    "price": 34.5,
+    "category": "cards",
+    "imageUrl": "https://example.com/images/collector_cards.jpg",
+    "inStock": 15
+  },
+  {
+    "id": 20,
+    "name": "Grandfather’s Wooden Puzzle",
+    "description": "Classic interlocking wooden puzzle that’s been around for generations.",
+    "price": 17.5,
+    "category": "puzzle games",
+    "imageUrl": "https://example.com/images/grandfather_puzzle.jpg",
+    "inStock": 50
+  }
+]
