@@ -4,13 +4,13 @@ import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-base-content">
-      <div className="hero py-12">
+      <div className="hero py-12 container mx-auto">
         <div className="hero-content text-center">
           <div className="w-full">
-            <h2 className="text-3xl font-extrabold text-base-100">
+            <h2 className="text-5xl font-extrabold text-base-100">
               STAY IN THE GAME
             </h2>
-            <p className="mt-4 text-lg text-base-100">
+            <p className="mt-4 text-xl text-base-100">
               Get the latest releases, exclusive deals, and gaming news
               delivered straight to your inbox
             </p>
@@ -92,7 +92,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className=" text-center mx-10 py-4 border-t border-gray-700 text-secondary">
+      <div className=" text-center mx-10 py-4 border-t border-gray-700 text-secondary container mx-auto">
         <p className="text-sm">© 2024 GameVault. All rights reserved.</p>
       </div>
     </footer>

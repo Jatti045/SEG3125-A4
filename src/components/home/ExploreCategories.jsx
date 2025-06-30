@@ -33,9 +33,9 @@ const ExploreCategories = function () {
         <section className={"bg-base-300 relative"}>
             <div className={"container mx-auto pt-16 pb-20 px-5"}>
                 <div className={"flex text-base-content justify-center items-center"}>
-                    <div className={"font-black text-center"}>
-                        <p className={"text-md uppercase mt-2"}>Explore by type</p>
-                        <h1 className={"text-4xl uppercase lg:text-6xl"}>Game Categories</h1>
+                    <div className={"text-center"}>
+                        <p className={"font-bold text-md uppercase mt-4"}>Explore by type</p>
+                        <h1 className={"font-black mt-2 text-4xl uppercase lg:text-6xl"}>Game Categories</h1>
                     </div>
                 </div>
                 <div className={"mt-15 place-self-center grid grid-cols-2 gap-5 lg:min-h-40 lg:grid-cols-4"}>
