@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
 import { Star } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "@/components/product/ProductCard.jsx";
+import HeroBanner from "@/components/ui/HeroBanner.jsx";
 
 export default function Shop() {
   const { items } = useShoppingCart();
@@ -23,7 +24,8 @@ export default function Shop() {
       : categoryName;
 
   // Filter state
-  const [maxPrice, setMaxPrice] = useState(100);
+  const [highestPrice, setHigestPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(0);
   const [selectedRatings, setSelectedRatings] = useState([]);
   const [filterOnSale, setFilterOnSale] = useState(false);
   const [filterBestseller, setFilterBestseller] = useState(false);
@@ -46,6 +48,14 @@ export default function Shop() {
             item.category.toLowerCase().trim() === category.toLowerCase().trim()
         )
       : items;
+
+  //Get data on items
+  useEffect(() => {
+     const newHighestPrice = categoryItems.reduce((max, item) => Math.max(max, item.price), 0);
+     setHigestPrice(Math.ceil(newHighestPrice));
+     setMaxPrice(newHighestPrice);
+  }, [categoryName]);
+
 
   // Apply filters
   const filteredItems = categoryItems.filter((item) => {
@@ -81,108 +91,124 @@ export default function Shop() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 p-8 bg-base-200">
-      {/* Sidebar Filters */}
-      <aside className="w-full lg:w-1/4 bg-white rounded-lg shadow p-6 space-y-6">
-        <h2 className="font-semibold text-lg">Filters</h2>
-
-        {/* Price Range */}
-        <div>
-          <h3 className="font-medium mb-2">Price Range</h3>
-          <input
-            type="range"
-            min={0}
-            max={100}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
-            className="range range-primary w-full"
-          />
-          <div className="flex justify-between text-sm mt-1">
-            <span>$0</span>
-            <span>${maxPrice}</span>
+      <>
+        <HeroBanner padding={"py-5"} textColor={"text-primary-content"} bgColor={"bg-base-content"}>
+          <div className={"px-4"}>
+            <h1 className="text-4xl lg:text-7xl font-black leading-tight uppercase">
+              {category.toLowerCase() === "shop"? "Shop all" : category}
+            </h1>
+            {category.toLowerCase() !== "shop" && (
+                <p className="text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed">
+                  Shop for your favourite {category.toLowerCase()}
+                </p>
+            )}
           </div>
-        </div>
+        </HeroBanner>
+        <div className={"bg-base-200"}>
+          <div className="flex container mx-auto flex-col lg:flex-row gap-8 p-8">
+            {/* Sidebar Filters */}
+            <aside className="w-full self-start lg:w-1/5 bg-white rounded-lg shadow p-6 space-y-6">
+              <h2 className="font-semibold text-lg">Filters</h2>
 
-        {/* Rating */}
-        <div>
-          <h3 className="font-medium mb-2">Rating</h3>
-          <div className="space-y-2">
-            {[5, 4, 3, 2, 1].map((stars) => (
-              <label key={stars} className="flex items-center space-x-2">
+              {/* Price Range */}
+              <div>
+                <h3 className="font-medium mb-2">Price Range</h3>
                 <input
-                  type="checkbox"
-                  checked={selectedRatings.includes(stars)}
-                  onChange={() => toggleRating(stars)}
-                  className="checkbox checkbox-sm checkbox-primary rounded-none"
+                    type="range"
+                    min={0}
+                    max={highestPrice}
+                    value={maxPrice}
+                    onChange={(e) => setMaxPrice(Number(e.target.value))}
+                    className="range range-primary w-full"
                 />
-                <div className="flex text-yellow-400">
-                  {Array.from({ length: stars }).map((_, i) => (
-                    <Star fill={"var(--color-warning)"} className={"text-warning"} key={i} size={14} />
+                <div className="flex justify-between text-sm mt-1">
+                  <span>$0</span>
+                  <span>${maxPrice}</span>
+                </div>
+              </div>
+
+              {/* Rating */}
+              <div>
+                <h3 className="font-medium mb-2">Rating</h3>
+                <div className="space-y-2">
+                  {[5, 4, 3, 2, 1].map((stars) => (
+                      <label key={stars} className="flex items-center space-x-2">
+                        <input
+                            type="checkbox"
+                            checked={selectedRatings.includes(stars)}
+                            onChange={() => toggleRating(stars)}
+                            className="checkbox checkbox-sm checkbox-primary rounded-none"
+                        />
+                        <div className="flex text-yellow-400">
+                          {Array.from({ length: stars }).map((_, i) => (
+                              <Star fill={"var(--color-warning)"} className={"text-warning"} key={i} size={14} />
+                          ))}
+                        </div>
+                        <span className="text-sm">{stars}+</span>
+                      </label>
                   ))}
                 </div>
-                <span className="text-sm">{stars}+</span>
-              </label>
-            ))}
-          </div>
-        </div>
+              </div>
 
-        {/* Availability & Bestseller */}
-        <div>
-          <h3 className="font-medium mb-2">Availability</h3>
-          <div className="space-y-2">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={filterOnSale}
-                onChange={() => setFilterOnSale((prev) => !prev)}
-                className="checkbox checkbox-sm checkbox-primary rounded-none"
-              />
-              <span className="text-sm">On Sale</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={filterBestseller}
-                onChange={() => setFilterBestseller((prev) => !prev)}
-                className="checkbox checkbox-sm checkbox-primary rounded-none"
-              />
-              <span className="text-sm">Bestsellers</span>
-            </label>
-          </div>
-        </div>
-      </aside>
+              {/* Availability & Bestseller */}
+              <div>
+                <h3 className="font-medium mb-2">Availability</h3>
+                <div className="space-y-2">
+                  <label className="flex items-center space-x-2">
+                    <input
+                        type="checkbox"
+                        checked={filterOnSale}
+                        onChange={() => setFilterOnSale((prev) => !prev)}
+                        className="checkbox checkbox-sm checkbox-primary rounded-none"
+                    />
+                    <span className="text-sm">On Sale</span>
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                        type="checkbox"
+                        checked={filterBestseller}
+                        onChange={() => setFilterBestseller((prev) => !prev)}
+                        className="checkbox checkbox-sm checkbox-primary rounded-none"
+                    />
+                    <span className="text-sm">Bestsellers</span>
+                  </label>
+                </div>
+              </div>
+            </aside>
 
-      {/* Main Content */}
-      <div className="flex-1 space-y-6">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">{category}</h1>
-            <p className="text-sm text-gray-600">
-              {sortedItems.length} products found
-            </p>
-          </div>
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <select
-              value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value)}
-              className="select select-bordered select-sm"
-            >
-              <option>Featured</option>
-              <option>Price: Low → High</option>
-              <option>Price: High → Low</option>
-              <option>Rating</option>
-            </select>
-          </div>
-        </div>
+            {/* Main Content */}
+            <div className="flex-1 space-y-6">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+                <div>
+                  <h1 className="text-3xl font-bold">{category}</h1>
+                  <p className="text-sm text-gray-600">
+                    {sortedItems.length} products found
+                  </p>
+                </div>
+                <div className="flex items-center space-x-4 mt-4 md:mt-0">
+                  <select
+                      value={sortOrder}
+                      onChange={(e) => setSortOrder(e.target.value)}
+                      className="select select-bordered select-sm"
+                  >
+                    <option>Featured</option>
+                    <option>Price: Low → High</option>
+                    <option>Price: High → Low</option>
+                    <option>Rating</option>
+                  </select>
+                </div>
+              </div>
 
-        {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sortedItems.map((item) => (
-            <ProductCard item={item} key={item.id} />
-          ))}
+              {/* Product Grid */}
+              <div className="grid auto-rows-fr grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {sortedItems.map((item) => (
+                    <ProductCard item={item} key={item.id} />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </>
   );
 }

@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-content">
+    <footer className="bg-base-content mt-auto">
       <div className="hero py-12 container mx-auto">
         <div className="hero-content text-center">
           <div className="w-full">

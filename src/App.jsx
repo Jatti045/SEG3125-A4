@@ -22,19 +22,20 @@ function App() {
   }
 
   return (
-    <div>
-      <ScrollToTop />
-      <Navbar />
+    <div className={"min-h-screen flex flex-col"}>
+        <Navbar />
+        <ScrollToTop />
       {/* Set mt-18 as that is equal to the displacement of the navbar*/}
-      <div className={"mt-16 lg:mt-18"} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/product/:id" element={<Product />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+        <main className="mt-16 lg:mt-18 flex-grow">
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/product/:id" element={<Product />} />
+                <Route path="/cart" element={<Cart />} />
+            </Routes>
+        </main>
       <Footer />
     </div>
   );
