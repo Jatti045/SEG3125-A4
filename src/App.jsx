@@ -7,6 +7,7 @@ import About from "@/pages/About.jsx";
 import Shop from "./pages/Shop.jsx";
 import Product from "./pages/Product.jsx";
 import Contact from "@/pages/Contact.jsx";
+import Cart from "./pages/Cart.jsx";
 
 function App() {
   function ScrollToTop() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </div>

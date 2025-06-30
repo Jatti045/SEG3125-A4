@@ -1,9 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Search, ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { useShoppingCart } from "../../contexts/ShoppingCartContext";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { cart } = useShoppingCart();
 
   const closeDropdown = () => {
     setIsDropdownOpen(false);
@@ -125,7 +127,7 @@ const Navbar = () => {
             <Link to="/cart" className="btn btn-ghost indicator">
               <ShoppingCart className="w-5 h-5" />
               <span className="badge badge-sm badge-primary indicator-item">
-                3
+                {cart && cart.length}
               </span>
             </Link>
             <label htmlFor="drawer-nav" className="btn btn-ghost lg:hidden">

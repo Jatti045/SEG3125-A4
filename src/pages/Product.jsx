@@ -13,7 +13,7 @@ import { useLocation } from "react-router-dom";
 import ProductCard from "../components/product/ProductCard.jsx";
 
 export default function Product() {
-  const { items } = useShoppingCart();
+  const { items, setCart } = useShoppingCart();
   const location = useLocation();
 
   const productId = location.pathname.split("/")[2];
@@ -82,7 +82,15 @@ export default function Product() {
           <p className="text-gray-700">{product.description}</p>
 
           <div className="flex items-center space-x-4">
-            <button className="btn btn-primary flex-1 gap-2">
+            <button
+              onClick={() =>
+                setCart((prevCart) => {
+                  alert("Item successfully added to cart");
+                  return [...prevCart, product];
+                })
+              }
+              className="btn btn-primary flex-1 gap-2"
+            >
               <ShoppingCart /> Add to Cart
             </button>
           </div>
