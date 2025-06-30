@@ -1,12 +1,6 @@
 import React from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
-import {
-  Star,
-  ShoppingCart,
-  Truck,
-  Shield,
-  RefreshCcw,
-} from "lucide-react";
+import { Star, ShoppingCart, Truck, Shield, RefreshCcw } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "@/components/product/ProductCard.jsx";
 
@@ -36,14 +30,14 @@ export default function Product() {
 
   function incrementQt() {
     let quantity = document.getElementById("quantity_box").value;
-    quantity++
+    quantity++;
     document.getElementById("quantity_box").value = quantity;
   }
 
   function decreaseQt() {
     let quantity = document.getElementById("quantity_box").value;
-    if (quantity === '1') return;
-    quantity--
+    if (quantity === "1") return;
+    quantity--;
     document.getElementById("quantity_box").value = quantity;
   }
 
@@ -96,17 +90,29 @@ export default function Product() {
           <div className="flex flex-col space-x-4">
             <label className={"text-gray-500"}>Quantity:</label>
             <div className={"join"}>
-              <button className={"btn btn-neutral"} onClick={decreaseQt}>-</button>
-              <input id={"quantity_box"} type={"number"} min={"1"} step={"1"} className={"w-25 text-center"} defaultValue={1} required />
-              <button className={"btn btn-neutral"} onClick={incrementQt}>+</button>
+              <button className={"btn btn-neutral"} onClick={decreaseQt}>
+                -
+              </button>
+              <input
+                id={"quantity_box"}
+                type={"number"}
+                min={"1"}
+                step={"1"}
+                className={"w-25 text-center"}
+                defaultValue={1}
+                required
+              />
+              <button className={"btn btn-neutral"} onClick={incrementQt}>
+                +
+              </button>
             </div>
-
           </div>
 
           <div className="flex items-center space-x-4">
             <button
               onClick={() =>
                 setCart((prevCart) => {
+                  alert("Item added to cart");
                   return [...prevCart, product];
                 })
               }
