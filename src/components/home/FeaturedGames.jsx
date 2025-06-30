@@ -28,7 +28,7 @@ const FeaturedGames = function () {
             <div className={"container mx-auto pt-16 pb-20 px-5"}>
                 <div className={"flex text-base-100 justify-between items-center"}>
                     <div className={"font-black"}>
-                        <p className={"text-md uppercase text-base-300/80 mt-2"}>Try some of our team's favourites</p>
+                        <p className={"text-md uppercase text-base-300/80 mt-2 tracking-widest"}>Try some of our team's favourites</p>
                         <h1 className={"text-4xl lg:text-6xl"}>FEATURED GAMES</h1>
                     </div>
                     <Link to={"/shop"} className={"btn btn-primary text-xl px-8 py-6 font-black"}>ALL GAMES<ArrowRight className={"ml-1 w-5 h-5"} strokeWidth={2}/></Link>

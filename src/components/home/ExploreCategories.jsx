@@ -34,7 +34,7 @@ const ExploreCategories = function () {
             <div className={"container mx-auto pt-16 pb-20 px-5"}>
                 <div className={"flex text-base-content justify-center items-center"}>
                     <div className={"text-center"}>
-                        <p className={"font-bold text-md uppercase mt-4"}>Explore by type</p>
+                        <p className={"font-bold text-md uppercase mt-4 tracking-widest"}>Explore by type</p>
                         <h1 className={"font-black mt-2 text-4xl uppercase lg:text-6xl"}>Game Categories</h1>
                     </div>
                 </div>

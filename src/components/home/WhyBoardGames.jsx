@@ -25,7 +25,7 @@ const WhyBoardGames = function () {
         <section className={"bg-base-100 relative"}>
             <div className={"container mx-auto pt-16 pb-20 px-5"}>
                 <div className={"text-center"}>
-                    <p className={"text-md font-bold text-primary uppercase mt-2"}>The magic of tabletop</p>
+                    <p className={"text-md font-bold text-primary uppercase mt-2 tracking-widest"}>The magic of tabletop</p>
                     <h1 className={"text-4xl font-black uppercase lg:text-6xl mt-2"}>Why board games matter</h1>
                     <p className={"text-xl font-semibold text-base-content/50 mt-6 max-w-4xl mx-auto"}>In a digital world, board games offer something irreplaceable: genuine human connection, creative thinking, and unforgettable shared experiences that bring people together around the table.</p>
                 </div>
@@ -40,7 +40,7 @@ const WhyBoardGames = function () {
                     ))}
                 </div>
                 <div className="card bg-primary text-primary-content w-full mt-16">
-                    <div className="card-body items-center px-10">
+                    <div className="card-body items-center px-10 py-13">
                         <h3 class="text-3xl lg:text-4xl font-black">THE GAMEVAULT PROMISE</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                             <div className="flex flex-col items-center">
