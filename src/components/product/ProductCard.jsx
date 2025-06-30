@@ -29,7 +29,7 @@ const ProductCard = ({ item }) => {
             <span className="text-xl font-bold">${(Math.round(item.price * 100) / 100).toFixed(2)}</span>
             {item.onSale && (
               <span className="text-sm line-through text-gray-400">
-                {(Math.round(item.comparePrice * 100) / 100).toFixed(2)}
+                ${(Math.round(item.comparePrice * 100) / 100).toFixed(2)}
               </span>
             )}
           </div>
