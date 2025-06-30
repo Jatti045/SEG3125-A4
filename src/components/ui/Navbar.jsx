@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Search, ShoppingCart } from "lucide-react";
-import {useState, useEffect, useRef} from "react";
+import { useState, useEffect, useRef } from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext";
 import products from "@/data/products"; // adjust path as needed
 
@@ -18,9 +18,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchRef.current &&
-          !searchRef.current.contains(event.target) &&
-          !searchBtnRef.current.contains(event.target)) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target) &&
+        !searchBtnRef.current.contains(event.target)
+      ) {
         setShowSearchInput(false);
       }
     };
@@ -32,7 +34,7 @@ const Navbar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showSearchInput])
+  }, [showSearchInput]);
 
   // Filter up to 5 matching products
   useEffect(() => {
@@ -136,8 +138,8 @@ const Navbar = () => {
               </button>
               {showSearchInput && (
                 <div
-                    ref={searchRef}
-                    className="absolute right-0 mt-2 w-64 bg-base-100 shadow-lg rounded"
+                  ref={searchRef}
+                  className="absolute right-0 mt-2 w-64 bg-base-100 shadow-lg rounded"
                 >
                   <input
                     type="text"
@@ -220,7 +222,9 @@ const Navbar = () => {
 
           {/* Categories */}
           <li>
-            <span className="font-bold text-2xl">Shop</span>
+            <Link onClick={closeDrawer} to="/shop">
+              <span className="font-bold text-2xl">Shop</span>
+            </Link>
             <ul>
               {[
                 ["cards", "Playing Cards"],

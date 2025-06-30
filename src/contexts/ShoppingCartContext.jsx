@@ -4,19 +4,55 @@ import productsData from "../data/products.json";
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
-  const [items, setItems] = useState(productsData);
+  const [items] = useState(productsData);
   const [cart, setCart] = useState([]);
 
-  const removeFromCart = (productId) => {
-    setCart((prevCart) => {
-      const updatedCart = prevCart.filter((item) => item.id !== productId);
-      return updatedCart;
+  const addToCart = (product, quantity = 1) => {
+    setCart((prev) => {
+      const existing = prev.find((p) => p.id === product.id);
+      if (existing) {
+        return prev.map((p) =>
+          p.id === product.id ? { ...p, quantity: p.quantity + quantity } : p
+        );
+      }
+      return [...prev, { ...product, quantity }];
     });
   };
 
-  const contextValue = { items, cart, setCart, removeFromCart };
+  const removeFromCart = (id) => {
+    setCart((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  const increaseCartQuantity = (id, by = 1) => {
+    setCart((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, quantity: p.quantity + by } : p))
+    );
+  };
+
+  const decreaseCartQuantity = (id, by = 1) => {
+    setCart((prev) =>
+      prev
+        .map((p) =>
+          p.id === id ? { ...p, quantity: Math.max(1, p.quantity - by) } : p
+        )
+        .filter((p) => p.quantity > 0)
+    );
+  };
+
+  const clearCart = () => setCart([]);
+
   return (
-    <ShoppingCartContext.Provider value={contextValue}>
+    <ShoppingCartContext.Provider
+      value={{
+        items,
+        cart,
+        addToCart,
+        removeFromCart,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        clearCart,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
