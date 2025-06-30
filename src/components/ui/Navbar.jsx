@@ -5,10 +5,16 @@ import { useShoppingCart } from "../../contexts/ShoppingCartContext";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   const { cart } = useShoppingCart();
 
   const closeDropdown = () => {
     setIsDropdownOpen(false);
+  };
+
+  const closeDrawer = () => {
+    const drawerCheckbox = document.getElementById("drawer-nav");
+    if (drawerCheckbox) drawerCheckbox.checked = false;
   };
 
   const location = useLocation();
@@ -31,7 +37,7 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal font-bold text-lg px-1">
               <li className={"dropdown dropdown-hover"} tabIndex={0}>
-                <Link to="/shop" onMouseEnter={() => setIsDropdownOpen(true)}>
+                <Link to="/shop" onClick={closeDropdown} onMouseEnter={() => setIsDropdownOpen(true)}>
                   Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
                 </Link>
                 {isDropdownOpen && (
@@ -112,10 +118,10 @@ const Navbar = () => {
                 )}
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/about" onClick={closeDropdown}>About</Link>
               </li>
               <li>
-                <Link to="/contact">Contact</Link>
+                <Link to="/contact" onClick={closeDropdown}>Contact</Link>
               </li>
             </ul>
           </div>
@@ -156,88 +162,69 @@ const Navbar = () => {
           className="drawer-overlay"
         ></label>
         <label
-          className={
-            "absolute top-4 right-4 z-10 text-xl cursor-pointer text-gray-600"
-          }
+          className={"absolute top-4 right-4 z-10 text-xl cursor-pointer text-gray-600"}
           htmlFor="drawer-nav"
           aria-label="close sidebar"
-        >
-          x
-        </label>
+        >x</label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4 pt-10">
           <li>
-            <label htmlFor="drawer-nav">
-              <Link className={"font-bold text-2xl"} to="/shop">
-                Shop
-              </Link>
-            </label>
+            <Link className={"font-bold text-2xl"} to="/shop" onClick={closeDrawer}>
+              Shop
+            </Link>
             <ul>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link className={"font-regular text-lg"} to="/shop/cards">
-                    Playing Cards
-                  </Link>
-                </label>
+                <Link className={"font-regular text-lg"} to="/shop/?category=cards" onClick={closeDrawer}>
+                  Playing Cards
+                </Link>
               </li>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link className={"font-regular text-lg"} to="/shop/dice">
-                    Dice Sets
-                  </Link>
-                </label>
+                <Link className={"font-regular text-lg"} to="/shop/?category=dice" onClick={closeDrawer}>
+                  Dice Sets
+                </Link>
               </li>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link
-                    className={"font-regular text-lg"}
-                    to="/shop/board_games"
-                  >
-                    Board Games
-                  </Link>
-                </label>
+                <Link
+                  className={"font-regular text-lg"}
+                  to="/shop/?category=board_games"
+                  onClick={closeDrawer}
+                >
+                  Board Games
+                </Link>
               </li>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link className={"font-regular text-lg"} to="/shop/rpg">
-                    Role Playing Games
-                  </Link>
-                </label>
+                <Link className={"font-regular text-lg"} to="/shop/?category=rpg" onClick={closeDrawer}>
+                  Role Playing Games
+                </Link>
               </li>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link
-                    className={"font-regular text-lg"}
-                    to="/shop/puzzle_games"
-                  >
-                    Puzzle Games
-                  </Link>
-                </label>
+                <Link
+                  className={"font-regular text-lg"}
+                  to="/shop/?category=puzzle_games"
+                  onClick={closeDrawer}
+                >
+                  Puzzle Games
+                </Link>
               </li>
               <li>
-                <label htmlFor="drawer-nav">
-                  <Link
-                    className={"font-regular text-lg"}
-                    to="/shop/trivia_games"
-                  >
-                    Trivia Games
-                  </Link>
-                </label>
+                <Link
+                  className={"font-regular text-lg"}
+                  to="/shop/?category=trivia_games"
+                  onClick={closeDrawer}
+                >
+                  Trivia Games
+                </Link>
               </li>
             </ul>
           </li>
           <li>
-            <label htmlFor="drawer-nav">
-              <Link className={"font-bold text-2xl"} to="/about">
-                About
-              </Link>
-            </label>
+            <Link className={"font-bold w-full text-2xl"} to="/about" onClick={closeDrawer}>
+              About
+            </Link>
           </li>
-          <li>
-            <label htmlFor="drawer-nav">
-              <Link className={"font-bold text-2xl"} to="/contact">
+          <li className={"w-full"}>
+            <Link className={"font-bold text-2xl w-full"} to="/contact" onClick={closeDrawer}>
                 Contact
-              </Link>
-            </label>
+            </Link>
           </li>
         </ul>
       </div>

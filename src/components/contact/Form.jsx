@@ -56,7 +56,7 @@ const Form = () => {
                                     <Phone className={"w-5 h-5 text-primary mt-1"} />
                                     <div>
                                         <p className="font-bold ">Phone Support</p>
-                                        <p className="">(555) 123-GAME</p>
+                                        <p className="">(613) 123-GAME</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">

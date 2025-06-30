@@ -113,14 +113,14 @@ export default function Shop() {
                   type="checkbox"
                   checked={selectedRatings.includes(stars)}
                   onChange={() => toggleRating(stars)}
-                  className="checkbox checkbox-sm checkbox-primary"
+                  className="checkbox checkbox-sm checkbox-primary rounded-none"
                 />
                 <div className="flex text-yellow-400">
                   {Array.from({ length: stars }).map((_, i) => (
-                    <Star key={i} size={14} />
+                    <Star fill={"var(--color-warning)"} className={"text-warning"} key={i} size={14} />
                   ))}
                 </div>
-                <span className="text-sm">{stars} & up</span>
+                <span className="text-sm">{stars}+</span>
               </label>
             ))}
           </div>
@@ -135,7 +135,7 @@ export default function Shop() {
                 type="checkbox"
                 checked={filterOnSale}
                 onChange={() => setFilterOnSale((prev) => !prev)}
-                className="checkbox checkbox-sm checkbox-primary"
+                className="checkbox checkbox-sm checkbox-primary rounded-none"
               />
               <span className="text-sm">On Sale</span>
             </label>
@@ -144,7 +144,7 @@ export default function Shop() {
                 type="checkbox"
                 checked={filterBestseller}
                 onChange={() => setFilterBestseller((prev) => !prev)}
-                className="checkbox checkbox-sm checkbox-primary"
+                className="checkbox checkbox-sm checkbox-primary rounded-none"
               />
               <span className="text-sm">Bestsellers</span>
             </label>

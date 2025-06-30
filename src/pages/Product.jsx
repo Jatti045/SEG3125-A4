@@ -3,8 +3,6 @@ import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
 import {
   Star,
   ShoppingCart,
-  Heart,
-  Share2,
   Truck,
   Shield,
   RefreshCcw,
@@ -35,6 +33,20 @@ export default function Product() {
   }
 
   console.log("Product: ", product);
+
+  function incrementQt() {
+    let quantity = document.getElementById("quantity_box").value;
+    quantity++
+    document.getElementById("quantity_box").value = quantity;
+  }
+
+  function decreaseQt() {
+    let quantity = document.getElementById("quantity_box").value;
+    if (quantity === '1') return;
+    quantity--
+    document.getElementById("quantity_box").value = quantity;
+  }
+
   return (
     <div className="p-8 space-y-8 bg-base-200">
       <div className="flex flex-col lg:flex-row gap-8">
@@ -57,8 +69,8 @@ export default function Product() {
         <div className="flex-1 space-y-4">
           <h1 className="text-4xl font-bold">{product.name}</h1>
           <div className="flex items-center space-x-4 text-lg">
-            <div className="flex items-center text-yellow-400">
-              <Star size={20} />
+            <div className="flex items-center text-warning">
+              <Star size={20} fill={"var(--color-warning)"} />
               <span className="ml-1 font-medium">4.8</span>
             </div>
             <span className="text-gray-500">({product.numReviews})</span>
@@ -81,11 +93,20 @@ export default function Product() {
 
           <p className="text-gray-700">{product.description}</p>
 
+          <div className="flex flex-col space-x-4">
+            <label className={"text-gray-500"}>Quantity:</label>
+            <div className={"join"}>
+              <button className={"btn btn-neutral"} onClick={decreaseQt}>-</button>
+              <input id={"quantity_box"} type={"number"} min={"1"} step={"1"} className={"w-25 text-center"} defaultValue={1} required />
+              <button className={"btn btn-neutral"} onClick={incrementQt}>+</button>
+            </div>
+
+          </div>
+
           <div className="flex items-center space-x-4">
             <button
               onClick={() =>
                 setCart((prevCart) => {
-                  alert("Item successfully added to cart");
                   return [...prevCart, product];
                 })
               }
