@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "@/components/ui/Navbar.jsx";
-import Footer from "./components/ui/Footer.jsx";
+import Footer from "@/components/ui/Footer.jsx";
 import Home from "@/pages/Home.jsx";
 import React, { useEffect } from "react";
 import About from "@/pages/About.jsx";
-import Shop from "./pages/Shop.jsx";
-import Product from "./pages/Product.jsx";
+import Shop from "@/pages/Shop.jsx";
+import Product from "@/pages/Product.jsx";
 import Contact from "@/pages/Contact.jsx";
-import Cart from "./pages/Cart.jsx";
+import Cart from "@/pages/Cart.jsx";
 
 function App() {
   function ScrollToTop() {

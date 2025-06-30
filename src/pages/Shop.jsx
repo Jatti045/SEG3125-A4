@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
-import { Grid, List, Star } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
-import ProductCard from "../components/product/ProductCard.jsx";
+import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
+import { Star } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import ProductCard from "@/components/product/ProductCard.jsx";
 
 export default function Shop() {
   const { items } = useShoppingCart();

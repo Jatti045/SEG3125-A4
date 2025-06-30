@@ -1,5 +1,5 @@
 import React from "react";
-import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
+import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
 import {
   Star,
   ShoppingCart,
@@ -8,7 +8,7 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import ProductCard from "../components/product/ProductCard.jsx";
+import ProductCard from "@/components/product/ProductCard.jsx";
 
 export default function Product() {
   const { items, setCart } = useShoppingCart();

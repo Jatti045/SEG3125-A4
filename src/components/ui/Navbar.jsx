@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Search, ShoppingCart } from "lucide-react";
 import { useState } from "react";
-import { useShoppingCart } from "../../contexts/ShoppingCartContext";
+import { useShoppingCart } from "@/contexts/ShoppingCartContext";
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
