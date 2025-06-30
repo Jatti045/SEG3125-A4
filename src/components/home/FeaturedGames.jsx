@@ -4,22 +4,22 @@ import {ArrowRight} from "lucide-react";
 const FeaturedGames = function () {
     const featuredGames = [
         {
-            name: "Game 1",
-            desc: "Game 1 desc",
+            name: "Catan: Classic Edition",
+            desc: "Trade, build, and settle the island in this award-winning strategy board game.",
+            price: "44.99",
+            link: "/product/5"
+        },
+        {
+            name: "Pathfinder Beginner Box",
+            desc: "Accessible RPG kit with adventures and character-building tools.",
             price: "24.99",
-            link: ""
+            link: "/product/8"
         },
         {
-            name: "Game 2",
-            desc: "Game 2 desc",
-            price: "34.99",
-            link: ""
-        },
-        {
-            name: "Game 3",
-            desc: "Game 3 desc",
+            name: "Bezzerwizzer Trivia Board Game",
+            desc: "Trade categories and answer questions to earn points and win.",
             price: "49.99",
-            link: ""
+            link: "/product/18"
         },
     ]
 
@@ -55,7 +55,7 @@ const FeaturedGames = function () {
                 </div>
             </div>
             <div className="absolute -bottom-16 left-0 right-0">
-                <svg viewBox="0 0 1200 120" className="w-full h-16 fill-base-content transform -scale-100">
+                <svg viewBox="0 0 1200 120" className="w-fit mx-auto h-16 fill-base-content transform -scale-100">
                     <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z"></path>
                 </svg>
             </div>

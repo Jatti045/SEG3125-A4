@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Search, ShoppingCart } from "lucide-react";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useRef} from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext";
 import products from "@/data/products"; // adjust path as needed
 
@@ -12,6 +12,27 @@ const Navbar = () => {
 
   const { cart } = useShoppingCart();
   const location = useLocation();
+
+  const searchRef = useRef(null);
+  const searchBtnRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current &&
+          !searchRef.current.contains(event.target) &&
+          !searchBtnRef.current.contains(event.target)) {
+        setShowSearchInput(false);
+      }
+    };
+
+    if (showSearchInput) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showSearchInput])
 
   // Filter up to 5 matching products
   useEffect(() => {
@@ -104,6 +125,7 @@ const Navbar = () => {
             {/* Search toggle and dropdown */}
             <div className="relative">
               <button
+                ref={searchBtnRef}
                 className="btn btn-ghost"
                 onClick={() => {
                   setShowSearchInput((v) => !v);
@@ -113,7 +135,10 @@ const Navbar = () => {
                 <Search className="w-5 h-5" />
               </button>
               {showSearchInput && (
-                <div className="absolute right-0 mt-2 w-64 bg-base-100 shadow-lg rounded">
+                <div
+                    ref={searchRef}
+                    className="absolute right-0 mt-2 w-64 bg-base-100 shadow-lg rounded"
+                >
                   <input
                     type="text"
                     value={searchTerm}
