@@ -10,7 +10,6 @@ const Navbar = () => {
   };
 
   const location = useLocation();
-  console.log("Location Navbar: ", location);
 
   return (
     <div className={"drawer drawer-end"}>
@@ -30,7 +29,7 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal font-bold text-lg px-1">
               <li className={"dropdown dropdown-hover"} tabIndex={0}>
-                <Link onMouseEnter={() => setIsDropdownOpen(true)}>
+                <Link to="/shop" onMouseEnter={() => setIsDropdownOpen(true)}>
                   Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
                 </Link>
                 {isDropdownOpen && (
@@ -109,9 +108,6 @@ const Navbar = () => {
                     </li>
                   </ul>
                 )}
-              </li>
-              <li>
-                <Link to="/resources">Resources</Link>
               </li>
               <li>
                 <Link to="/about">About</Link>

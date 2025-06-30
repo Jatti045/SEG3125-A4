@@ -8,19 +8,79 @@ export default function Shop() {
   const { items } = useShoppingCart();
   const location = useLocation();
 
-  const categoryName = location.search.split("=")[1];
-  const category = categoryName.includes("_")
-    ? categoryName
-        .replace("_", " ")
-        .split(" ")
-        .map((word) => word[0].toUpperCase() + word.slice(1))
-        .join(" ")
-    : categoryName[0].toUpperCase() + categoryName.slice(1);
+  // Determine category from query
+  const categoryName =
+    location.search.length > 0 ? location.search.split("=")[1] : "Shop";
+  const category =
+    location.search.length > 0
+      ? categoryName.includes("_")
+        ? categoryName
+            .replace(/_/g, " ")
+            .split(" ")
+            .map((word) => word[0].toUpperCase() + word.slice(1))
+            .join(" ")
+        : categoryName[0].toUpperCase() + categoryName.slice(1)
+      : categoryName;
 
-  const filteredItems = items.filter(
-    (item) =>
-      item.category.toLowerCase().trim() === category.toLowerCase().trim()
-  );
+  // Filter state
+  const [maxPrice, setMaxPrice] = useState(100);
+  const [selectedRatings, setSelectedRatings] = useState([]);
+  const [filterInStock, setFilterInStock] = useState(false);
+  const [filterOnSale, setFilterOnSale] = useState(false);
+  const [filterBestseller, setFilterBestseller] = useState(false);
+  const [sortOrder, setSortOrder] = useState("Featured");
+
+  // Toggle rating filter
+  const toggleRating = (rating) => {
+    setSelectedRatings((prev) =>
+      prev.includes(rating)
+        ? prev.filter((r) => r !== rating)
+        : [...prev, rating]
+    );
+  };
+
+  // Get items matching category
+  const categoryItems =
+    location.search.length > 0
+      ? items.filter(
+          (item) =>
+            item.category.toLowerCase().trim() === category.toLowerCase().trim()
+        )
+      : items;
+
+  // Apply filters
+  const filteredItems = categoryItems.filter((item) => {
+    // Price filter
+    if (item.price > maxPrice) return false;
+
+    // Rating filter
+    if (
+      selectedRatings.length > 0 &&
+      !selectedRatings.some((r) => item.rating >= r)
+    )
+      return false;
+
+    // Availability & Bestseller filters
+    if (filterInStock || filterOnSale || filterBestseller) {
+      const okInStock = filterInStock && item.inStock > 0;
+      const okOnSale = filterOnSale && item.price < item.comparePrice;
+      const okBestseller = filterBestseller && item.isBestseller;
+
+      if (!okInStock && !okOnSale && !okBestseller) return false;
+    }
+
+    return true;
+  });
+
+  // Apply sorting
+  const sortedItems = [...filteredItems];
+  if (sortOrder === "Price: Low → High") {
+    sortedItems.sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "Price: High → Low") {
+    sortedItems.sort((a, b) => b.price - a.price);
+  } else if (sortOrder === "Rating") {
+    sortedItems.sort((a, b) => b.rating - a.rating);
+  }
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 p-8 bg-base-200">
@@ -33,13 +93,15 @@ export default function Shop() {
           <h3 className="font-medium mb-2">Price Range</h3>
           <input
             type="range"
-            min="0"
-            max="100"
+            min={0}
+            max={100}
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(Number(e.target.value))}
             className="range range-primary w-full"
           />
           <div className="flex justify-between text-sm mt-1">
             <span>$0</span>
-            <span>$100</span>
+            <span>${maxPrice}</span>
           </div>
         </div>
 
@@ -51,6 +113,8 @@ export default function Shop() {
               <label key={stars} className="flex items-center space-x-2">
                 <input
                   type="checkbox"
+                  checked={selectedRatings.includes(stars)}
+                  onChange={() => toggleRating(stars)}
                   className="checkbox checkbox-sm checkbox-primary"
                 />
                 <div className="flex text-yellow-400">
@@ -64,19 +128,37 @@ export default function Shop() {
           </div>
         </div>
 
-        {/* Availability */}
+        {/* Availability & Bestseller */}
         <div>
           <h3 className="font-medium mb-2">Availability</h3>
           <div className="space-y-2">
-            {["In Stock", "On Sale"].map((opt) => (
-              <label key={opt} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  className="checkbox checkbox-sm checkbox-primary"
-                />
-                <span className="text-sm">{opt}</span>
-              </label>
-            ))}
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                checked={filterInStock}
+                onChange={() => setFilterInStock((prev) => !prev)}
+                className="checkbox checkbox-sm checkbox-primary"
+              />
+              <span className="text-sm">In Stock</span>
+            </label>
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                checked={filterOnSale}
+                onChange={() => setFilterOnSale((prev) => !prev)}
+                className="checkbox checkbox-sm checkbox-primary"
+              />
+              <span className="text-sm">On Sale</span>
+            </label>
+            <label className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                checked={filterBestseller}
+                onChange={() => setFilterBestseller((prev) => !prev)}
+                className="checkbox checkbox-sm checkbox-primary"
+              />
+              <span className="text-sm">Bestsellers</span>
+            </label>
           </div>
         </div>
       </aside>
@@ -88,11 +170,15 @@ export default function Shop() {
           <div>
             <h1 className="text-3xl font-bold">{category}</h1>
             <p className="text-sm text-gray-600">
-              {filteredItems.length} product found
+              {sortedItems.length} products found
             </p>
           </div>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <select className="select select-bordered select-sm">
+            <select
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+              className="select select-bordered select-sm"
+            >
               <option>Featured</option>
               <option>Price: Low → High</option>
               <option>Price: High → Low</option>
@@ -102,12 +188,10 @@ export default function Shop() {
         </div>
 
         {/* Product Grid */}
-        <div
-          className={`${"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"} gap-6`}
-        >
-          {filteredItems && filteredItems.length > 0
-            ? filteredItems.map((item) => <ProductCard item={item} />)
-            : null}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sortedItems.map((item) => (
+            <ProductCard item={item} key={item.id} />
+          ))}
         </div>
       </div>
     </div>

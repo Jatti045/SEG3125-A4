@@ -1,4 +1,3 @@
-// src/pages/Product.jsx
 import React from "react";
 import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
 import {
@@ -46,9 +45,11 @@ export default function Product() {
               alt="Product"
               className="w-full rounded-lg shadow"
             />
-            <div className="absolute top-4 left-4 badge badge-primary">
-              Bestseller
-            </div>
+            {product.isBestSeller ? (
+              <div className="absolute top-4 left-4 badge badge-primary">
+                Bestseller
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -67,9 +68,11 @@ export default function Product() {
           <div className="flex items-baseline space-x-4">
             <span className="text-3xl font-bold">{product.price}</span>
             <span className="text-lg line-through text-gray-400">
-              {product.price}
+              {product.comparePrice}
             </span>
-            <span className="badge badge-error">Save $10.00</span>
+            <span className="badge badge-error">
+              Save ${(product.comparePrice - product.price).toFixed(2)}
+            </span>
           </div>
 
           <p className="text-gray-700">{product.description}</p>

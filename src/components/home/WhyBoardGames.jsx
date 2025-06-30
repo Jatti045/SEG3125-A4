@@ -111,7 +111,7 @@ const WhyBoardGames = function () {
                 Our Story
               </Link>
               <Link
-                to={"/shop/?category=cards"}
+                to={"/shop"}
                 className={
                   "btn btn-lg btn-outline font-black hover:bg-base-100 hover:text-primary"
                 }
