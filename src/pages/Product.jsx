@@ -61,18 +61,22 @@ export default function Product() {
               <Star size={20} />
               <span className="ml-1 font-medium">4.8</span>
             </div>
-            <span className="text-gray-500">(1247 reviews)</span>
+            <span className="text-gray-500">({product.numReviews})</span>
             <span className="text-green-600 font-medium">In Stock</span>
           </div>
 
           <div className="flex items-baseline space-x-4">
             <span className="text-3xl font-bold">{product.price}</span>
-            <span className="text-lg line-through text-gray-400">
-              {product.comparePrice}
-            </span>
-            <span className="badge badge-error">
-              Save ${(product.comparePrice - product.price).toFixed(2)}
-            </span>
+            {product.onSale && (
+              <>
+                <span className="text-lg line-through text-gray-400">
+                  {product.comparePrice}
+                </span>
+                <span className="badge badge-error">
+                  Save ${(product.comparePrice - product.price).toFixed(2)}
+                </span>
+              </>
+            )}
           </div>
 
           <p className="text-gray-700">{product.description}</p>

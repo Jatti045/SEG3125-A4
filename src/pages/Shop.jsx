@@ -25,7 +25,6 @@ export default function Shop() {
   // Filter state
   const [maxPrice, setMaxPrice] = useState(100);
   const [selectedRatings, setSelectedRatings] = useState([]);
-  const [filterInStock, setFilterInStock] = useState(false);
   const [filterOnSale, setFilterOnSale] = useState(false);
   const [filterBestseller, setFilterBestseller] = useState(false);
   const [sortOrder, setSortOrder] = useState("Featured");
@@ -61,12 +60,11 @@ export default function Shop() {
       return false;
 
     // Availability & Bestseller filters
-    if (filterInStock || filterOnSale || filterBestseller) {
-      const okInStock = filterInStock && item.inStock > 0;
-      const okOnSale = filterOnSale && item.price < item.comparePrice;
+    if (filterOnSale || filterBestseller) {
+      const okOnSale = filterOnSale && item.onSale;
       const okBestseller = filterBestseller && item.isBestseller;
 
-      if (!okInStock && !okOnSale && !okBestseller) return false;
+      if (!okOnSale && !okBestseller) return false;
     }
 
     return true;
@@ -132,15 +130,6 @@ export default function Shop() {
         <div>
           <h3 className="font-medium mb-2">Availability</h3>
           <div className="space-y-2">
-            <label className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                checked={filterInStock}
-                onChange={() => setFilterInStock((prev) => !prev)}
-                className="checkbox checkbox-sm checkbox-primary"
-              />
-              <span className="text-sm">In Stock</span>
-            </label>
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"

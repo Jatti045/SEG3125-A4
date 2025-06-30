@@ -23,13 +23,15 @@ const ProductCard = ({ item }) => {
           <div className="flex items-center space-x-2 my-2">
             <Star className="text-yellow-400" size={14} />
             <span className="text-sm font-medium">{item.rating}</span>
-            <span className="text-xs text-gray-500">(156)</span>
+            <span className="text-xs text-gray-500">({item.numReviews})</span>
           </div>
           <div className="flex items-baseline space-x-2">
             <span className="text-xl font-bold">{item.price}</span>
-            <span className="text-sm line-through text-gray-400">
-              {item.comparePrice}
-            </span>
+            {item.onSale && (
+              <span className="text-sm line-through text-gray-400">
+                {item.comparePrice}
+              </span>
+            )}
           </div>
         </div>
       </div>
