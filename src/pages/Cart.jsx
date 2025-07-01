@@ -25,7 +25,7 @@ export default function ShoppingCart() {
 
   return (
    <div className={"bg-base-100"}>
-      <div className="p-8 container mx-auto min-h-screen">
+      <div className="p-8 container mx-auto">
         <h1 className="text-4xl uppercase font-black mb-2">Shopping Cart</h1>
         <p className="text-sm text-gray-600 mb-6">
           {cart.length} item{cart.length !== 1 && "s"}
@@ -100,13 +100,16 @@ export default function ShoppingCart() {
               <span>Subtotal</span>
               <span className={"font-black"}>{fmt(subtotal)}</span>
             </div>
-            <div className="flex justify-between mb-2 text-success">
-              <span>You Save</span>
-              <span className={"font-black"}>-{fmt(savings)}</span>
-            </div>
+            { savings > 0 && (
+                <div className="flex justify-between mb-2 text-success">
+                  <span>You Save</span>
+                  <span className={"font-black"}>-{fmt(savings)}</span>
+                </div>
+            )}
+
             <div className="flex justify-between mb-2">
               <span>Shipping</span>
-              <span className={"font-black"}>{shipping === 0 ? "FREE" : fmt(shipping)}</span>
+              <span className={"font-black"}>{shipping === 0 ? "FREE" : fmt(cart.length > 0 ? shipping : 0)}</span>
             </div>
             <div className="flex justify-between mb-4">
               <span>Tax (8%)</span>

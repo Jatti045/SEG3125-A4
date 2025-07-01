@@ -1,5 +1,6 @@
 import React from "react";
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -48,35 +49,32 @@ const Footer = () => {
         </div>
 
         <div className={"mx-auto"}>
-          <span className="footer-title uppercase">Shop</span>
-          <a href="#" className="link link-hover">
+          <Link to={"/shop"} className="footer-title uppercase">Shop</Link>
+          <Link to={"/shop/?category=cards"} className="link link-hover">
             Playing Cards
-          </a>
-          <a href="#" className="link link-hover">
+          </Link>
+          <Link to={"/shop/?category=dice"} className="link link-hover">
             Dice Sets
-          </a>
-          <a href="#" className="link link-hover">
+          </Link>
+          <Link to={"/shop/?category=board_games"} className="link link-hover">
             Board Games
-          </a>
-          <a href="#" className="link link-hover">
+          </Link>
+          <Link to={"/shop/?category=RPG"} className="link link-hover">
             Role Playing Games
-          </a>
-          <a href="#" className="link link-hover">
+          </Link>
+          <Link to={"/shop/?category=puzzle_game"} className="link link-hover">
             Puzzle Games
-          </a>
-          <a href="#" className="link link-hover">
+          </Link>
+          <Link to={"/shop/?category=trivia_games"} className="link link-hover">
             Trivia Games
-          </a>
+          </Link>
         </div>
 
         <div className={"mx-auto"}>
           <span className="footer-title uppercase">Support</span>
-          <a href="#" className="link link-hover">
+          <Link to={"/contact"} className="link link-hover">
             Contact Us
-          </a>
-          <a href="#" className="link link-hover">
-            FAQs
-          </a>
+          </Link>
           <a href="#" className="link link-hover">
             Shipping Info
           </a>
