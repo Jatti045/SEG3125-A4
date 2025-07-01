@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ item }) => {
   return (
     <Link className={"h-full"} to={`/product/${item.id}`}>
-      <div className="card hover:brightness-90 h-full transition-all duration-100 cursor-pointer bg-white shadow rounded-lg overflow-hidden">
+      <div className="card hover:brightness-90 h-full transition-all duration-100 cursor-pointer rounded-box shadow-sm border-1 border-border overflow-hidden">
         <div className="relative bg-gray-100 h-48 flex items-center justify-center">
           {item.isBestseller ? (
             <div className="badge badge-primary absolute top-2 left-2">

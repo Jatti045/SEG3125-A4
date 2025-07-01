@@ -15,7 +15,7 @@ const OurStory = () => {
                         </div>
                     </div>
                     <div className={"relative"}>
-                        <img src={image} className={"h-full w-full rounded-[var(--radius-box)] "}/>
+                        <img src={image} className={"h-full w-full rounded-box"} alt={"Team Picture"}/>
                     </div>
                 </div>
             </div>

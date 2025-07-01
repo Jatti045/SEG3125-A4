@@ -28,14 +28,14 @@ export default function Product() {
     v.toLocaleString("en-US", { style: "currency", currency: "CAD" });
 
   return (
-    <div className="bg-base-200 min-h-screen">
+    <div className="bg-base-200">
       <div className="container mx-auto px-8 py-20">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-1/2">
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full rounded-lg shadow"
+              className="w-full rounded-box shadow"
             />
             {product.isBestseller && (
               <div className="absolute top-4 left-4 badge badge-primary">

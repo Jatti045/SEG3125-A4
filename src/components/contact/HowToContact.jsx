@@ -34,7 +34,7 @@ const TheTeam = () => {
                 </div>
                 <div className={"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"}>
                     {contactMethods.map((contact, index) => (
-                        <div className="card bg-base-100 border-1 border-base-content/10 shadow-md transition-all duration-200 hover:shadow-xl items-center pt-7 pb-2" key={index}>
+                        <div className="card bg-base-100 border-1 border-border shadow-md transition-all duration-200 hover:shadow-xl items-center pt-7 pb-2" key={index}>
                             <div
                                 className="inline-flex items-center justify-center w-16 h-16 bg-primary/15 rounded-full">
                                 <contact.icon className={"text-primary w-8 h-8"}/>

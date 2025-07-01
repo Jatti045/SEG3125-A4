@@ -105,76 +105,79 @@ export default function Shop() {
           </div>
         </HeroBanner>
         <div className={"bg-base-100"}>
-          <div className="flex container mx-auto flex-col lg:flex-row gap-8 p-8">
+          <div className="grid container mx-auto grid-cols-1 lg:grid-cols-[2fr_5fr] gap-8 p-8">
             {/* Sidebar Filters */}
-            <aside className="w-full self-start lg:w-1/5 bg-white rounded-lg shadow p-6 space-y-6">
-              <h2 className="font-semibold text-lg">Filters</h2>
+            <div>
+              <aside className="sticky top-26 lg:mt-20 w-full self-start bg-white rounded-box shadow-sm border-1 border-border p-6 space-y-6">
+                <h2 className="font-semibold text-lg">Filters</h2>
 
-              {/* Price Range */}
-              <div>
-                <h3 className="font-medium mb-2">Price Range</h3>
-                <input
-                    type="range"
-                    min={0}
-                    max={highestPrice}
-                    value={maxPrice}
-                    onChange={(e) => setMaxPrice(Number(e.target.value))}
-                    className="range range-primary w-full"
-                />
-                <div className="flex justify-between text-sm mt-1">
-                  <span>$0</span>
-                  <span>${maxPrice}</span>
+                {/* Price Range */}
+                <div>
+                  <h3 className="font-medium mb-2">Price Range</h3>
+                  <input
+                      type="range"
+                      min={0}
+                      max={highestPrice}
+                      value={maxPrice}
+                      onChange={(e) => setMaxPrice(Number(e.target.value))}
+                      className="range range-primary w-full"
+                  />
+                  <div className="flex justify-between text-sm mt-1">
+                    <span>$0</span>
+                    <span>${maxPrice}</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Rating */}
-              <div>
-                <h3 className="font-medium mb-2">Rating</h3>
-                <div className="space-y-2">
-                  {[5, 4, 3, 2, 1].map((stars) => (
-                      <label key={stars} className="flex items-center space-x-2">
-                        <input
-                            type="checkbox"
-                            checked={selectedRatings.includes(stars)}
-                            onChange={() => toggleRating(stars)}
-                            className="checkbox checkbox-sm checkbox-primary rounded-none"
-                        />
-                        <div className="flex text-yellow-400">
-                          {Array.from({ length: stars }).map((_, i) => (
-                              <Star fill={"var(--color-warning)"} className={"text-warning"} key={i} size={14} />
-                          ))}
-                        </div>
-                        <span className="text-sm">{stars}+</span>
-                      </label>
-                  ))}
+                {/* Rating */}
+                <div>
+                  <h3 className="font-medium mb-2">Rating</h3>
+                  <div className="space-y-2">
+                    {[5, 4, 3, 2, 1].map((stars) => (
+                        <label key={stars} className="flex items-center space-x-2">
+                          <input
+                              type="checkbox"
+                              checked={selectedRatings.includes(stars)}
+                              onChange={() => toggleRating(stars)}
+                              className="checkbox checkbox-sm checkbox-primary rounded-none"
+                          />
+                          <div className="flex text-yellow-400">
+                            {Array.from({ length: stars }).map((_, i) => (
+                                <Star fill={"var(--color-warning)"} className={"text-warning"} key={i} size={14} />
+                            ))}
+                          </div>
+                          <span className="text-sm">{stars}+</span>
+                        </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Availability & Bestseller */}
-              <div>
-                <h3 className="font-medium mb-2">Availability</h3>
-                <div className="space-y-2">
-                  <label className="flex items-center space-x-2">
-                    <input
-                        type="checkbox"
-                        checked={filterOnSale}
-                        onChange={() => setFilterOnSale((prev) => !prev)}
-                        className="checkbox checkbox-sm checkbox-primary rounded-none"
-                    />
-                    <span className="text-sm">On Sale</span>
-                  </label>
-                  <label className="flex items-center space-x-2">
-                    <input
-                        type="checkbox"
-                        checked={filterBestseller}
-                        onChange={() => setFilterBestseller((prev) => !prev)}
-                        className="checkbox checkbox-sm checkbox-primary rounded-none"
-                    />
-                    <span className="text-sm">Bestsellers</span>
-                  </label>
+                {/* Availability & Bestseller */}
+                <div>
+                  <h3 className="font-medium mb-2">Availability</h3>
+                  <div className="space-y-2">
+                    <label className="flex items-center space-x-2">
+                      <input
+                          type="checkbox"
+                          checked={filterOnSale}
+                          onChange={() => setFilterOnSale((prev) => !prev)}
+                          className="checkbox checkbox-sm checkbox-primary rounded-none"
+                      />
+                      <span className="text-sm">On Sale</span>
+                    </label>
+                    <label className="flex items-center space-x-2">
+                      <input
+                          type="checkbox"
+                          checked={filterBestseller}
+                          onChange={() => setFilterBestseller((prev) => !prev)}
+                          className="checkbox checkbox-sm checkbox-primary rounded-none"
+                      />
+                      <span className="text-sm">Bestsellers</span>
+                    </label>
+                  </div>
                 </div>
-              </div>
-            </aside>
+              </aside>
+
+            </div>
 
             {/* Main Content */}
             <div className="flex-1 space-y-6">

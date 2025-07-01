@@ -9,6 +9,7 @@ import Product from "@/pages/Product.jsx";
 import Contact from "@/pages/Contact.jsx";
 import Cart from "@/pages/Cart.jsx";
 import NotFound from "@/pages/NotFound.jsx";
+import Checkout from "@/pages/Checkout.jsx";
 
 function App() {
   function ScrollToTop() {
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
                 <Route path="*" element={<NotFound />}/>
             </Routes>
         </main>

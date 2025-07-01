@@ -56,7 +56,7 @@ const ExploreCategories = function () {
                     className={"!brightness-80"}
                   />
                 </figure>
-                <div className="absolute inset-0 bg-gradient-to-t rounded-[var(--radius-box)] from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t rounded-box from-black/60 to-transparent"></div>
                 <div className="card-body gap-0">
                   <h2 className={"font-black text-lg drop-shadow-xl"}>
                     {cat.name}

@@ -3,6 +3,7 @@
 @import "tailwindcss";
 @theme {
     --font-inter: 'Inter', sans-serif;
+    --color-border: hsl(240 5.9% 90%);
 }
 
 @plugin "daisyui" {
@@ -28,7 +29,7 @@
     --color-neutral-content: oklch(92.951% 0.002 17.197);
     --color-info: oklch(62% 0.214 259.815);
     --color-info-content: oklch(100% 0 0);
-    --color-success: oklch(69% 0.17 162.48);
+    --color-success: oklch(79% 0.209 151.711);
     --color-success-content: oklch(100% 0 0);
     --color-warning: oklch(76% 0.188 70.08);
     --color-warning-content: oklch(100% 0 0);

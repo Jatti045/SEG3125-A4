@@ -6,7 +6,7 @@ const Form = () => {
             <div className={"container mx-auto pt-16 pb-20 px-5"}>
                 <div className={"grid grid-cols-1 lg:grid-cols-2 gap-12"}>
                     <fieldset
-                        className="fieldset px-10 py-10 bg-base-100 shadow-sm border-base-content/15 text-sm rounded-box border p-4 w-full">
+                        className="fieldset px-10 py-10 bg-base-100 shadow-sm border-1 border-border rounded-box text-sm p-4 w-full">
                         <h1 className={"uppercase tracking-tight text-3xl font-black "}>Send us a message</h1>
                         <p className={"text-lg font-normal"}>Fill out the form below and we'll get back to you soon!</p>
 
@@ -29,7 +29,7 @@ const Form = () => {
                         <button className="btn btn-primary btn-lg font-black uppercase">Send message</button>
                     </fieldset>
                     <div className={"flex flex-col gap-4"}>
-                        <div className="rounded-[var(--radius-box)] border border-base-content/15 bg-base-100 shadow-sm" >
+                        <div className="shadow-sm border-1 border-border rounded-box bg-base-100" >
                             <div className="flex flex-col space-y-1.5 p-6">
                                 <h3 className="tracking-tight text-2xl font-black flex items-center gap-2">
                                     <MapPin className={"w-6 h-6 text-primary"} />
@@ -68,7 +68,7 @@ const Form = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="rounded-[var(--radius-box)] border border-base-content/15 bg-base-100 shadow-sm" >
+                        <div className="rounded-box border border-border bg-base-100 shadow-sm" >
                             <div className="flex flex-col space-y-1.5 p-6">
                                 <h3
                                 className="tracking-tight text-2xl font-black ">WHAT WE CAN HELP
