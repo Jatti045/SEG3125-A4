@@ -10,7 +10,7 @@
     "numReviews": 128,
     "isBestseller": true,
     "category": "cards",
-    "imageUrl": "https://example.com/images/poker_cards.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81cl0obexuL._AC_SX679_.jpg",
     "inStock": 56
   },
   {
@@ -24,7 +24,7 @@
     "numReviews": 73,
     "isBestseller": false,
     "category": "cards",
-    "imageUrl": "https://example.com/images/tarot_deck.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/91jnwiZvo2L.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 42
   },
   {
@@ -37,7 +37,7 @@
     "numReviews": 54,
     "isBestseller": false,
     "category": "dice",
-    "imageUrl": "https://example.com/images/rpg_dice_set.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/61odpnLOBDS._AC_SX679_.jpg",
     "inStock": 85
   },
   {
@@ -51,7 +51,7 @@
     "numReviews": 41,
     "isBestseller": true,
     "category": "dice",
-    "imageUrl": "https://example.com/images/metal_d20.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71DwV31jAxL._AC_SX679_.jpg",
     "inStock": 33
   },
   {
@@ -64,7 +64,7 @@
     "numReviews": 210,
     "isBestseller": true,
     "category": "board games",
-    "imageUrl": "https://example.com/images/catan.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71AbDpYEkgL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 28
   },
   {
@@ -78,7 +78,7 @@
     "numReviews": 132,
     "isBestseller": true,
     "category": "board games",
-    "imageUrl": "https://example.com/images/ticket_to_ride.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/91YNJM4oyhL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 37
   },
   {
@@ -91,7 +91,7 @@
     "numReviews": 87,
     "isBestseller": false,
     "category": "rpg",
-    "imageUrl": "https://example.com/images/dnd_starter.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/91FSax4w-kL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 50
   },
   {
@@ -105,7 +105,7 @@
     "numReviews": 68,
     "isBestseller": false,
     "category": "rpg",
-    "imageUrl": "https://example.com/images/pathfinder_box.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71kBE4doAcL.__AC_SY300_SX300_QL70_ML2_.jpg",
     "inStock": 45
   },
   {
@@ -118,7 +118,7 @@
     "numReviews": 50,
     "isBestseller": false,
     "category": "puzzle games",
-    "imageUrl": "https://example.com/images/wooden_globe_puzzle.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81JVl1SZufL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 67
   },
   {
@@ -132,7 +132,7 @@
     "numReviews": 92,
     "isBestseller": false,
     "category": "puzzle games",
-    "imageUrl": "https://example.com/images/escape_room_box.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71rU0wwV7bL._AC_SX385_.jpg",
     "inStock": 22
   },
   {
@@ -146,7 +146,7 @@
     "numReviews": 110,
     "isBestseller": true,
     "category": "trivia games",
-    "imageUrl": "https://example.com/images/trivial_master.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71k7wU3XzeL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 40
   },
   {
@@ -159,7 +159,7 @@
     "numReviews": 58,
     "isBestseller": false,
     "category": "trivia games",
-    "imageUrl": "https://example.com/images/smart_ass.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71HmrLnVdPL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 55
   },
   {
@@ -172,7 +172,7 @@
     "numReviews": 77,
     "isBestseller": false,
     "category": "cards",
-    "imageUrl": "https://example.com/images/animal_cards.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81eCPh-9GTL.__AC_SY300_SX300_QL70_ML2_.jpg",
     "inStock": 75
   },
   {
@@ -186,7 +186,7 @@
     "numReviews": 61,
     "isBestseller": false,
     "category": "dice",
-    "imageUrl": "https://example.com/images/glow_dice.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81KapLY8L1L._AC_SX679_.jpg",
     "inStock": 60
   },
   {
@@ -199,7 +199,7 @@
     "numReviews": 150,
     "isBestseller": true,
     "category": "board games",
-    "imageUrl": "https://example.com/images/azul.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81ahW-D3qsS.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 30
   },
   {
@@ -212,7 +212,7 @@
     "numReviews": 35,
     "isBestseller": false,
     "category": "rpg",
-    "imageUrl": "https://example.com/images/starfinder_core.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/71mFUP2uUwL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 20
   },
   {
@@ -226,7 +226,7 @@
     "numReviews": 29,
     "isBestseller": false,
     "category": "puzzle games",
-    "imageUrl": "https://example.com/images/crystal_eiffel.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81eyWOwYLyL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 28
   },
   {
@@ -240,7 +240,7 @@
     "numReviews": 44,
     "isBestseller": false,
     "category": "trivia games",
-    "imageUrl": "https://example.com/images/bezzerwizzer.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/718n8imToXL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 44
   },
   {
@@ -254,7 +254,7 @@
     "numReviews": 19,
     "isBestseller": true,
     "category": "cards",
-    "imageUrl": "https://example.com/images/collector_cards.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81SLvOQYKiL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 15
   },
   {
@@ -267,7 +267,7 @@
     "numReviews": 52,
     "isBestseller": false,
     "category": "puzzle games",
-    "imageUrl": "https://example.com/images/grandfather_puzzle.jpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/718otyOPOBL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 50
   }
 ]

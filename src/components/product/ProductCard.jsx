@@ -15,18 +15,24 @@ const ProductCard = ({ item }) => {
           <img
             src={item.imageUrl}
             alt={item.name}
-            className="object-contain h-32"
+            className="object-cover w-full h-48"
           />
         </div>
         <div className="p-4">
           <h2 className="font-semibold text-lg">{item.name}</h2>
           <div className="flex items-center space-x-2 my-2">
-            <Star className="text-warning" fill="var(--color-warning)" size={14} />
+            <Star
+              className="text-warning"
+              fill="var(--color-warning)"
+              size={14}
+            />
             <span className="text-sm font-medium">{item.rating}</span>
             <span className="text-xs text-gray-500">({item.numReviews})</span>
           </div>
           <div className="flex items-baseline space-x-2">
-            <span className="text-xl font-bold">${(Math.round(item.price * 100) / 100).toFixed(2)}</span>
+            <span className="text-xl font-bold">
+              ${(Math.round(item.price * 100) / 100).toFixed(2)}
+            </span>
             {item.onSale && (
               <span className="text-sm line-through text-gray-400">
                 ${(Math.round(item.comparePrice * 100) / 100).toFixed(2)}

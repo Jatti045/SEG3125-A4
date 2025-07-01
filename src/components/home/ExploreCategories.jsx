@@ -11,21 +11,29 @@ const ExploreCategories = function () {
       name: "Board Games",
       number: 10,
       link: "/shop/?category=board_games",
+      imageUrl:
+        "https://m.media-amazon.com/images/I/71KnAT1F6wL.__AC_SY300_SX300_QL70_ML2_.jpg",
     },
     {
       name: "RPG Games",
       number: 4,
       link: "/shop/?category=rpg",
+      imageUrl:
+        "https://m.media-amazon.com/images/I/71firOkenVL.__AC_SX300_SY300_QL70_ML2_.jpg",
     },
     {
       name: "Puzzle Games",
       number: 5,
       link: "/shop/?category=puzzle_games",
+      imageUrl:
+        "https://m.media-amazon.com/images/I/81TJWRltVtL.__AC_SX300_SY300_QL70_ML2_.jpg",
     },
     {
       name: "Trivia Games",
       number: 3,
       link: "/shop/?category=trivia_games",
+      imageUrl:
+        "https://m.media-amazon.com/images/I/719Y5b4wHoL.__AC_SX300_SY300_QL70_ML2_.jpg",
     },
   ];
 
@@ -44,17 +52,14 @@ const ExploreCategories = function () {
         </div>
         <div
           className={
-            "mt-15 place-self-center grid grid-cols-2 gap-5 lg:min-h-40 lg:grid-cols-4"
+            "mt-15 place-self-center grid grid-cols-2 gap-6 lg:min-h-40 lg:grid-cols-4"
           }
         >
           {categories.map((cat, i) => (
             <Link to={cat.link} key={i}>
               <div className="card relative items-end image-full shadow-sm transition-all duration-300 hover:scale-101 hover:shadow-2xl">
                 <figure>
-                  <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    className={"!brightness-80"}
-                  />
+                  <img src={cat.imageUrl} className={"!brightness-80"} />
                 </figure>
                 <div className="absolute inset-0 bg-gradient-to-t rounded-box from-black/60 to-transparent"></div>
                 <div className="card-body gap-0">
