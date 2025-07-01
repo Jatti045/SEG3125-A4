@@ -104,7 +104,7 @@ export default function Shop() {
             )}
           </div>
         </HeroBanner>
-        <div className={"bg-base-200"}>
+        <div className={"bg-base-100"}>
           <div className="flex container mx-auto flex-col lg:flex-row gap-8 p-8">
             {/* Sidebar Filters */}
             <aside className="w-full self-start lg:w-1/5 bg-white rounded-lg shadow p-6 space-y-6">

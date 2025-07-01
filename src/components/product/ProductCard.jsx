@@ -21,7 +21,7 @@ const ProductCard = ({ item }) => {
         <div className="p-4">
           <h2 className="font-semibold text-lg">{item.name}</h2>
           <div className="flex items-center space-x-2 my-2">
-            <Star className="text-warning" fill={"#FA9700FF"} size={14} />
+            <Star className="text-warning" fill="var(--color-warning)" size={14} />
             <span className="text-sm font-medium">{item.rating}</span>
             <span className="text-xs text-gray-500">({item.numReviews})</span>
           </div>

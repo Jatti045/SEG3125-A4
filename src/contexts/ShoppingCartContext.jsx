@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
 import productsData from "../data/products.json";
 
 export const ShoppingCartContext = createContext();
@@ -6,6 +6,12 @@ export const ShoppingCartContext = createContext();
 export const ShoppingCartProvider = ({ children }) => {
   const [items] = useState(productsData);
   const [cart, setCart] = useState([]);
+  const [cartQuantity, setCartQuantity] = useState(0)
+
+  useEffect(() => {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      setCartQuantity(total);
+  }, [cart]);
 
   const addToCart = (product, quantity = 1) => {
     setCart((prev) => {
@@ -46,6 +52,7 @@ export const ShoppingCartProvider = ({ children }) => {
       value={{
         items,
         cart,
+        cartQuantity,
         addToCart,
         removeFromCart,
         increaseCartQuantity,

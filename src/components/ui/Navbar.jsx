@@ -10,7 +10,7 @@ const Navbar = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const { cart } = useShoppingCart();
+  const { cart, cartQuantity } = useShoppingCart();
   const location = useLocation();
 
   const searchRef = useRef(null);
@@ -171,7 +171,7 @@ const Navbar = () => {
             <Link to="/cart" className="btn btn-ghost indicator">
               <ShoppingCart className="w-5 h-5" />
               <span className="badge badge-sm badge-primary indicator-item">
-                {cart?.length || 0}
+                {cartQuantity || 0}
               </span>
             </Link>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useMemo, useState} from "react";
 import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
 import {
   Star,
@@ -17,13 +17,15 @@ export default function Product() {
   const product = items.find((p) => p.id === productId);
   const [quantity, setQuantity] = useState(1);
 
-  const related = items
-    .filter((p) => p.id !== productId)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 3);
+  const related = useMemo(() => {
+    return items
+        .filter((p) => p.id !== productId)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3);
+  }, [items, productId]);
 
   const fmt = (v) =>
-    v.toLocaleString("en-US", { style: "currency", currency: "USD" });
+    v.toLocaleString("en-US", { style: "currency", currency: "CAD" });
 
   return (
     <div className="bg-base-200 min-h-screen">
@@ -44,7 +46,7 @@ export default function Product() {
           <div className="flex-1 space-y-4">
             <h1 className="text-4xl font-bold">{product.name}</h1>
             <div className="flex items-center space-x-2">
-              <Star size={24} fill="gold" />
+              <Star size={24} fill="var(--color-warning)" className={"text-warning"} />
               <span className="font-medium">{product.rating}</span>
               <span className="text-gray-500">({product.numReviews})</span>
             </div>
@@ -62,27 +64,28 @@ export default function Product() {
               )}
             </div>
             <p className="text-gray-700">{product.description}</p>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col gap-3 h-fit">
+              <div className={"join"}>
+                <button
+                    className="join-item btn btn-neutral btn-md"
+                    onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                >
+                  –
+                </button>
+                <input
+                    type="text"
+                    value={quantity}
+                    className="join-item w-20 text-center bg-base-100 border"
+                />
+                <button
+                    className="join-item btn btn-neutral btn-md"
+                    onClick={() => setQuantity((q) => q + 1)}
+                >
+                  +
+                </button>
+              </div>
               <button
-                className="btn btn-neutral"
-                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              >
-                –
-              </button>
-              <input
-                type="text"
-                readOnly
-                value={quantity}
-                className="w-12 text-center bg-base-100 border"
-              />
-              <button
-                className="btn btn-neutral"
-                onClick={() => setQuantity((q) => q + 1)}
-              >
-                +
-              </button>
-              <button
-                className="btn btn-primary flex-1 gap-2"
+                className="btn h-10 btn-primary gap-2"
                 onClick={() => addToCart(product, quantity)}
               >
                 <CartIcon /> Add to Cart
