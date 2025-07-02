@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
 import { Star } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -98,8 +98,14 @@ export default function Shop() {
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
+  const didMount = useRef(null);
   // — auto‐scroll to top on page change
   useEffect(() => {
+    if (!didMount.current) {
+      didMount.current = true;
+      return;
+    }
+
     const element = document.getElementById("category_title");
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
