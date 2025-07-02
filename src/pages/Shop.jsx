@@ -43,10 +43,12 @@ export default function Shop() {
     const max = categoryItems.reduce((acc, i) => Math.max(acc, i.price), 0);
     const ceilMax = Math.ceil(max);
     setHighestPrice(ceilMax);
-    setMaxPrice(ceilMax);
-    // reset to first page whenever category changes
+
+    // Only reset maxPrice if current maxPrice exceeds the new highestPrice
+    setMaxPrice((prev) => (prev > ceilMax ? ceilMax : prev));
     setCurrentPage(1);
   }, [categoryItems]);
+
 
   // — Whenever filters or sort change, go back to page 1
   useEffect(() => {

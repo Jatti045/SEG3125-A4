@@ -29,13 +29,13 @@ export default function Product() {
 
   return (
     <div className="bg-base-200">
-      <div className="container mx-auto px-8 py-20">
+      <div className="lg:container mx-auto pb-20 lg:px-8 lg:pt-20">
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="w-full lg:w-1/2">
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full rounded-box shadow"
+              className="lg:rounded-box lg:shadow w-[100vw] lg:w-fill max-h-130 xl:max-h-150"
             />
             {product.isBestseller && (
               <div className="absolute top-4 left-4 badge badge-primary">
@@ -43,7 +43,7 @@ export default function Product() {
               </div>
             )}
           </div>
-          <div className="flex-1 space-y-4">
+          <div className="flex-1 space-y-4 px-10 lg:px-0">
             <h1 className="text-4xl font-bold">{product.name}</h1>
             <div className="flex items-center space-x-2">
               <Star size={24} fill="var(--color-warning)" className={"text-warning"} />
@@ -118,7 +118,7 @@ export default function Product() {
             </div>
           </div>
         </div>
-        <section className="mt-12">
+        <section className="mt-12 px-10 lg:px-0">
           <h2 className="text-2xl font-bold mb-4">Related Products</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((p) => (

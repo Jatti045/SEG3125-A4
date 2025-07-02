@@ -269,5 +269,31 @@
     "category": "puzzle games",
     "imageUrl": "https://m.media-amazon.com/images/I/718otyOPOBL.__AC_SX300_SY300_QL70_ML2_.jpg",
     "inStock": 50
+  },
+  {
+    "id": 21,
+    "name": "Starfinder: Beginner Box",
+    "description": "The Starfinder Beginner Box has everything you need to kickstart a lifetime of pulse-pounding adventure among the stars—the only limit is your imagination. Take a look inside the Starfinder Beginner Box with Designer Joe Pasini to see all the cool bits and pieces we’ve added to help bring new players into the Starfinder universe!",
+    "price": 39.99,
+    "onSale": false,
+    "rating": 4.5,
+    "numReviews": 52,
+    "isBestseller": true,
+    "category": "rpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/81mjXnBfZ9L._SY342_.jpg",
+    "inStock": 50
+  },
+  {
+    "id": 22,
+    "name": "Starfinder Second Edition Playtest Rulebook",
+    "description": "The Starfinder Playtest Rulebook brings Starfinder into a new age of compatibility, as Starfinder switches to using the same rules engine that powers the popular Second Edition of the Pathfinder Roleplaying Game. Inside this playtest for the new edition, you’ll find six new classes, 10 ancestries, new skills, new feats, futuristic equipment including augmentations and upgrades, new science-fantasy spells, and more!",
+    "price": 47.49,
+    "onSale": false,
+    "rating": 4.2,
+    "numReviews": 12,
+    "isBestseller": false,
+    "category": "rpg",
+    "imageUrl": "https://m.media-amazon.com/images/I/61qe21uJ6RL._SY385_.jpg",
+    "inStock": 50
   }
 ]

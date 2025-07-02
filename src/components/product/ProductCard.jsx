@@ -5,7 +5,7 @@ const ProductCard = ({ item }) => {
   return (
     <Link className={"h-full"} to={`/product/${item.id}`}>
       <div className="card hover:brightness-90 h-full transition-all duration-100 cursor-pointer rounded-box shadow-sm border-1 border-border overflow-hidden">
-        <div className="relative bg-gray-100 h-48 flex items-center justify-center">
+        <div className="relative bg-gray-100 flex items-center justify-center">
           {item.isBestseller ? (
             <div className="badge badge-primary absolute top-2 left-2">
               Bestseller
@@ -15,7 +15,7 @@ const ProductCard = ({ item }) => {
           <img
             src={item.imageUrl}
             alt={item.name}
-            className="object-cover w-full h-48"
+            className="object-cover w-full h-70"
           />
         </div>
         <div className="p-4">

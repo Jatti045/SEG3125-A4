@@ -72,15 +72,17 @@ const Navbar = () => {
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal font-bold text-lg px-1">
               <li className="dropdown dropdown-hover" tabIndex={0}>
-                <Link to="/shop">
-                  <button
+                <div>
+                  <Link
                     onMouseEnter={() => setIsDropdownOpen(true)}
                     onClick={closeDropdown}
+                    to={"/shop"}
                     className="flex items-center"
                   >
-                    Shop <ChevronDown className="inline-block ml-1 w-4 h-4" />
-                  </button>
-                </Link>
+                    Shop
+                  </Link>
+                  <ChevronDown className="inline-block ml-1 w-4 h-4" onClick={() => setIsDropdownOpen(true)} />
+                </div>
                 {isDropdownOpen && (
                   <ul className="dropdown-content !mt-0 menu bg-base-100 rounded-box w-52 shadow-sm font-regular text-md">
                     {[
