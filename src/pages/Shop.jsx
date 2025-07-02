@@ -11,7 +11,7 @@ export default function Shop() {
 
   // — Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 9;
 
   // — Filter / sort state
   const [highestPrice, setHighestPrice] = useState(0);
@@ -85,7 +85,7 @@ export default function Shop() {
 
   // ensure currentPage is never out of range
   useEffect(() => {
-    if (currentPage > totalPages) {
+    if (currentPage > totalPages || currentPage < 1) {
       setCurrentPage(1);
     }
   }, [currentPage, totalPages]);
@@ -100,7 +100,10 @@ export default function Shop() {
 
   // — auto‐scroll to top on page change
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const element = document.getElementById("category_title");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   }, [currentPage]);
 
   // — rating toggle helper
@@ -134,7 +137,7 @@ export default function Shop() {
       <div className="bg-base-100">
         <div className="grid container mx-auto grid-cols-1 lg:grid-cols-[2fr_5fr] gap-8 p-8">
           {/* Sidebar */}
-          <aside className="sticky top-26 lg:mt-20 w-full self-start bg-white rounded-box shadow-sm border p-6 space-y-6">
+          <aside className="sticky top-26 lg:mt-20 w-full self-start bg-white border-border rounded-box shadow-sm border p-6 space-y-6">
             <h2 className="font-semibold text-lg">Filters</h2>
 
             {/* Price */}
@@ -206,7 +209,7 @@ export default function Shop() {
             {/* Header */}
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
               <div>
-                <h1 className="text-3xl font-bold">{category}</h1>
+                <h1 id={"category_title"} className="text-3xl font-bold scroll-mt-20">{category}</h1>
                 <p className="text-sm text-gray-600">
                   {totalProducts} products found
                 </p>
@@ -232,11 +235,11 @@ export default function Shop() {
 
             {/* Pagination */}
             <div className="flex justify-center space-x-2">
-              {pages.map((p) => (
+              {pages.length > 1 && pages.map((p) => (
                 <button
                   key={p}
                   onClick={() => setCurrentPage(p)}
-                  className={`px-4 py-2 border rounded ${
+                  className={`px-4 py-2 border rounded hover:cursor-pointer ${
                     p === currentPage
                       ? "bg-primary text-primary-content"
                       : "border-gray-300"

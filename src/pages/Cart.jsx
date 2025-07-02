@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import { useShoppingCart } from "../contexts/ShoppingCartContext.jsx";
 import { Link } from "react-router-dom";
 import {ArrowLeft, ArrowRight, X} from "lucide-react";
@@ -110,12 +110,12 @@ export default function ShoppingCart() {
                 <span className={"font-black"}>{shipping === 0 ? "FREE" : fmt(cart.length > 0 ? shipping : 0)}</span>
               </div>
               <div className="flex justify-between mb-4">
-                <span>Tax (8%)</span>
+                <span>Tax</span>
                 <span className={"font-black"}>{fmt(tax)}</span>
               </div>
               <div className="flex justify-between border-t pt-3 font-black text-xl">
                 <span className={"uppercase"}>Total</span>
-                <span>{fmt(total)}</span>
+                <span>{fmt(cart.length > 0 ? total : 0)}</span>
               </div>
               { cart.length > 0 ? (
                       <Link className="btn uppercase btn-lg font-black text-lg btn-error btn-block mt-6" to={"/checkout"}>
