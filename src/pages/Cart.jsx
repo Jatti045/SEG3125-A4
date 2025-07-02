@@ -84,9 +84,6 @@ export default function ShoppingCart() {
                 </div>
               </div>
             ))}
-            <Link to="/shop" className="btn btn-outline w-fit font-black uppercase btn-ghost mt-4">
-              <ArrowLeft className={"w-4 h-4"} /> Continue Shopping
-            </Link>
             {cart.length === 0 && (
                 <div className="flex-1 flex flex-col justify-center pb-20 text-center w-full">
                   Your Shopping Cart is Empty.
@@ -94,46 +91,51 @@ export default function ShoppingCart() {
             )}
           </div>
 
-          <div className="w-full font-semibold flex flex-col gap-3 bg-white rounded-box shadow-sm border-1 border-border p-6">
-            <h2 className="text-2xl font-black uppercase mb-4">Order Summary</h2>
-            <div className="flex justify-between mb-2">
-              <span>Subtotal</span>
-              <span className={"font-black"}>{fmt(subtotal)}</span>
-            </div>
-            { savings > 0 && (
-                <div className="flex justify-between mb-2 text-success">
-                  <span>You Save</span>
-                  <span className={"font-black"}>-{fmt(savings)}</span>
-                </div>
-            )}
+          <div className={"lg:col-span-1"}>
+            <div className="w-full font-semibold flex flex-col gap-3 bg-white rounded-box shadow-sm border-1 border-border p-6 sticky top-26">
+              <h2 className="text-2xl font-black uppercase mb-4">Order Summary</h2>
+              <div className="flex justify-between mb-2">
+                <span>Subtotal</span>
+                <span className={"font-black"}>{fmt(subtotal)}</span>
+              </div>
+              { savings > 0 && (
+                  <div className="flex justify-between mb-2 text-success">
+                    <span>You Save</span>
+                    <span className={"font-black"}>-{fmt(savings)}</span>
+                  </div>
+              )}
 
-            <div className="flex justify-between mb-2">
-              <span>Shipping</span>
-              <span className={"font-black"}>{shipping === 0 ? "FREE" : fmt(cart.length > 0 ? shipping : 0)}</span>
-            </div>
-            <div className="flex justify-between mb-4">
-              <span>Tax (8%)</span>
-              <span className={"font-black"}>{fmt(tax)}</span>
-            </div>
-            <div className="flex justify-between border-t pt-3 font-black text-xl">
-              <span className={"uppercase"}>Total</span>
-              <span>{fmt(total)}</span>
-            </div>
-            { cart.length > 0 ? (
-                <Link className="btn uppercase btn-lg font-black text-lg btn-error btn-block mt-6" to={"/checkout"}>
-                  Proceed to Checkout <ArrowRight className="w-5 h-5" />
-                </Link>
-              ):
-                (
-                <button className="btn btn-disabled btn-lg text-base-content/40 hover:!cursor-not-allowed btn-block mt-6">
-                  Proceed to Checkout <ArrowRight className="w-5 h-5" />
-                </button>
-                )
-            }
-            <p className={"text-xs text-gray-500 text-center mt-4"}>Secure checkout powered by SSL encryption</p>
+              <div className="flex justify-between mb-2">
+                <span>Shipping</span>
+                <span className={"font-black"}>{shipping === 0 ? "FREE" : fmt(cart.length > 0 ? shipping : 0)}</span>
+              </div>
+              <div className="flex justify-between mb-4">
+                <span>Tax (8%)</span>
+                <span className={"font-black"}>{fmt(tax)}</span>
+              </div>
+              <div className="flex justify-between border-t pt-3 font-black text-xl">
+                <span className={"uppercase"}>Total</span>
+                <span>{fmt(total)}</span>
+              </div>
+              { cart.length > 0 ? (
+                      <Link className="btn uppercase btn-lg font-black text-lg btn-error btn-block mt-6" to={"/checkout"}>
+                        Proceed to Checkout <ArrowRight className="w-5 h-5" />
+                      </Link>
+                  ):
+                  (
+                      <button className="btn btn-disabled btn-lg text-base-content/40 hover:!cursor-not-allowed btn-block mt-6">
+                        Proceed to Checkout <ArrowRight className="w-5 h-5" />
+                      </button>
+                  )
+              }
+              <p className={"text-xs text-gray-500 text-center mt-4"}>Secure checkout powered by SSL encryption</p>
 
+            </div>
           </div>
         </div>
+        <Link to="/shop" className="btn btn-outline w-fit font-black uppercase btn-ghost mt-10">
+          <ArrowLeft className={"w-4 h-4"} /> Continue Shopping
+        </Link>
       </div>
    </div>
   );
