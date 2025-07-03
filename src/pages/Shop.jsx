@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import { useShoppingCart } from "@/contexts/ShoppingCartContext.jsx";
 import { Star } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -14,8 +14,6 @@ export default function Shop() {
   const productsPerPage = 9;
 
   // — Filter / sort state
-  const [highestPrice, setHighestPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
   const [selectedRatings, setSelectedRatings] = useState([]);
   const [filterOnSale, setFilterOnSale] = useState(false);
   const [filterBestseller, setFilterBestseller] = useState(false);
@@ -23,37 +21,45 @@ export default function Shop() {
 
   // — Derive category from query string
   const rawCategory =
-    location.search.length > 0 ? location.search.split("=")[1] : "Shop";
-  const category = rawCategory
-    .split("_")
-    .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join(" ");
+    location.search.length ?
+        location.search.split("=")[1]
+        : "Shop";
+
+  const category = useMemo(
+      () =>
+          rawCategory
+              .split("_")
+              .map((w) => w[0].toUpperCase() + w.slice(1))
+              .join(" "),
+      [rawCategory]
+  );
 
   // — Items in this category
-  const categoryItems =
-    location.search.length > 0
-      ? items.filter(
-          (item) =>
-            item.category.toLowerCase().trim() === category.toLowerCase().trim()
+  const categoryItems = useMemo(() => {
+    return location.search.length
+        ? items.filter(
+            (i) =>
+                i.category.toLowerCase().trim() === category.toLowerCase().trim()
         )
-      : items;
+        : items;
+  }, [items, category, location.search]);
 
-  // — Compute highestPrice on category change
-  useEffect(() => {
-    const max = categoryItems.reduce((acc, i) => Math.max(acc, i.price), 0);
-    const ceilMax = Math.ceil(max);
-    setHighestPrice(ceilMax);
-
-    // Only reset maxPrice if current maxPrice exceeds the new highestPrice
-    setMaxPrice((prev) => (prev > ceilMax ? ceilMax : prev));
-    setCurrentPage(1);
+  const highestPrice = useMemo(() => {
+    return Math.ceil(
+        categoryItems.reduce((acc, i) => Math.max(acc, i.price), 0)
+    );
   }, [categoryItems]);
 
+  const [maxPrice, setMaxPrice] = useState(highestPrice);
+
+  useEffect(() => {
+    setMaxPrice(highestPrice);
+  }, [highestPrice]);
 
   // — Whenever filters or sort change, go back to page 1
   useEffect(() => {
     setCurrentPage(1);
-  }, [maxPrice, selectedRatings, filterOnSale, filterBestseller, sortOrder]);
+  }, [maxPrice, categoryItems, selectedRatings, filterOnSale, filterBestseller, sortOrder]);
 
   // — Filter logic
   const filteredItems = categoryItems.filter((item) => {
