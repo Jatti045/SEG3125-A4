@@ -9,7 +9,7 @@ const Banner = function () {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     const totalSlides = 3;
-    const slideInterval = 6000;
+    const slideInterval = 5000;
 
     const nextSlide = () => {
         setCurrentSlide((prevSlide) => ((prevSlide + 1) % totalSlides));
@@ -21,15 +21,15 @@ const Banner = function () {
         setCurrentSlide(newSlide);
     }
 
-    // useEffect(() => {
-    //     const intervalId = setInterval(() => {
-    //         nextSlide();
-    //     }, slideInterval)
-    //
-    //     return () => {
-    //         clearInterval(intervalId);
-    //     }
-    // }, [currentSlide])
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            nextSlide();
+        }, slideInterval)
+
+        return () => {
+            clearInterval(intervalId);
+        }
+    }, [currentSlide])
 
     // Array to map through for cleaner rendering
     const slides = [

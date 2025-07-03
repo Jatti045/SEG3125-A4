@@ -32,6 +32,9 @@ const Footer = () => {
           <span className="footer-title font-black">
             <span className="text-red-500">GAME</span>VAULT
           </span>
+          <p className={"text-secondary"}>
+            Designed by James Attia and <br/> Edward-Joseph Fattouch
+          </p>
           <div className="grid grid-flow-col gap-4 mt-4">
             <a href="#" aria-label="Facebook">
               <Facebook size={20} />
