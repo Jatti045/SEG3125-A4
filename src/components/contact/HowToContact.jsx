@@ -10,7 +10,7 @@ const TheTeam = () => {
             icon: Mail
         },
         {
-            line1: "email us",
+            line1: "call us",
             line2: "Speak with our team",
             line3: "(613) 123-GAME",
             line4: "Mon-Fri, 9AM-6PM EST",
